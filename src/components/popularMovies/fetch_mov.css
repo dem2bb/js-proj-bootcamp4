@@ -1,0 +1,32 @@
+.main-cont {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+.film-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  list-style: none;
+}
+.gallery-list__item {
+  margin: 0 auto;
+  margin-bottom: 31px;
+}
+.gallery-list__img {
+  border-radius: 5px;
+}
+
+.gallery-list__item-title {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  color: #000000;
+}
+
+.film-info-cont {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  color: #ff6b08;
+}
