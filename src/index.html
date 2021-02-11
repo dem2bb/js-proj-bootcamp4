@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
 </head>
+
 <body>
   <header class="page-header">
     <div class="container">
@@ -17,10 +19,10 @@
           <span class="logo-text">Filmoteca</span>
         </a>
         <ul class="site-nav-link list">
-          <li class="item current">
+          <li class="item home-js current">
             <a href="./index.html">HOME</a>
           </li>
-          <li class="item">
+          <li class="item library-js">
             <a href="#">MY LIBRARY</a>
           </li>
         </ul>
@@ -29,26 +31,26 @@
         <input class="search-form-input" type="text" name="query" autocomplete="off" placeholder="Movie search" />
         <span class="search-form-input-error"></span>
       </form>
+      <div class="header-button">
+        <button class="button watch is-hidden is-active" type="button">WATCHED</button>
+        <button class="button queue is-hidden" type="button">QUEUE</button>
+      </div>
+
+
     </div>
   </header>
   <section>
     <div class="container"></div>
   </section>
   <footer class="footer">
-         <div class="container">
-        <p class="footer-description">
-          © 2021 | All Rights Reserved | Developed with
-          <img
-            class="footer-description__icon"
-            src="./images/icons/love.svg"
-            width="14px"
-            height="14px"
-            alt=""
-          />
-          by
-          <a class="footer-description__link" href="">GoIT Students</a>
-        </p>
-      </div>
+    <div class="container">
+      <p class="footer-description">
+        © 2021 | All Rights Reserved | Developed with
+        <img class="footer-description__icon" src="./images/icons/love.svg" width="14px" height="14px" alt="" />
+        by
+        <a class="footer-description__link" href="">GoIT Students</a>
+      </p>
+    </div>
   </footer>
 </body>
 
