@@ -1,1 +1,116 @@
-hello
+.page-header {
+  height: 230px;
+  padding-top: 46px;
+  background-image: url('../../images/header-mobile.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.logo-text {
+  opacity: 0;
+}
+
+.site-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 38px;
+  color: #ffffff;
+}
+
+.site-nav-link {
+  display: flex;
+  gap: 39px;
+}
+
+.site-nav-link a {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 14px;
+  color: inherit;
+}
+
+.current {
+  position: relative;
+}
+
+.current::after {
+  content: '';
+  position: absolute;
+  width: 105%;
+  height: 3px;
+  left: 0;
+  bottom: -2px;
+
+  background: #ff6b08;
+  border-radius: 2px;
+}
+
+.search-form {
+  position: relative;
+  text-align: center;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.search-form-input {
+  display: block;
+  width: 100%;
+  max-width: 336px;
+  height: 20px;
+  margin: 0 auto;
+  margin-bottom: 22px;
+  padding: 10px;
+  outline: none;
+  font-size: inherit;
+  line-height: inherit;
+  color: #ffffff;
+  background: transparent;
+  border: none;
+  border-bottom: 0.5px solid #ffffff;
+}
+
+/* .search-form-input::after {
+  position: absolute;
+  content: '';
+  width: 15px;
+  height: 15px;
+  background-image: url('../../images/input-search.svg');
+  background-repeat: no-repeat;
+  background-color: #ff001b;
+} */
+
+.search-form-input::-webkit-input-placeholder {
+  color: rgb(255, 255, 255);
+}
+.search-form-input::-webkit-input-placeholder::after {
+  width: 5px;
+  height: 5px;
+  background-color: #ff001b;
+}
+
+.search-form-input-error {
+  color: #ff001b;
+}
+
+@media (min-width: 768px) {
+  .logo-text {
+    opacity: 1;
+    margin-left: 12px;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 35px;
+    color: #ffffff;
+  }
+
+  .page-header {
+    background-image: url('../../images/header-table.jpg');
+  }
+}
+
+@media (min-width: 1024px) {
+  .page-header {
+    background-image: url('../../images/header-pc.jpg');
+  }
+}
