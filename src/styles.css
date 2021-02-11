@@ -1,6 +1,6 @@
 @import './components/container/container.css';
 @import './components/example/header.css';
-
+@import './components/footer/footer.css';
 *,
 *::before,
 *::after {
