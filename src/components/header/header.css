@@ -1,10 +1,17 @@
 .page-header {
   height: 230px;
   padding-top: 46px;
-  background-image: url('../../images/header-mobile.jpg');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+    url('../../images/header-mobile.jpg');
+
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+}
+
+.page-header.lib-bcg {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+    url('../../images/lib-bcg-mobile.jpg');
 }
 
 .logo-text {
@@ -15,7 +22,7 @@
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  margin-bottom: 38px;
+
   color: #ffffff;
 }
 
@@ -54,12 +61,18 @@
   line-height: 16px;
 }
 
+.search-form.is-hidden {
+  display: none;
+}
+
 .search-form-input {
   display: block;
   width: 100%;
   max-width: 336px;
   height: 20px;
   margin: 0 auto;
+  margin-top: 38px;
+
   margin-bottom: 22px;
   padding: 10px;
   outline: none;
@@ -73,13 +86,9 @@
 
 .search-form-input::placeholder {
   color: rgb(255, 255, 255);
-  background-image: url(../../images/input-search.svg);
+  background-image: url(../../images/icons/input-search.svg);
   background-repeat: no-repeat;
   background-position-x: right;
-}
-
-.search-form-input.is-hidden {
-  display: none;
 }
 
 .search-form-input-error {
@@ -97,13 +106,23 @@
   }
 
   .page-header {
-    background-image: url('../../images/header-table.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url('../../images/header-tablet.jpg');
+  }
+  .page-header.lib-bcg {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url('../../images/lib-bcg-tablet.jpg');
   }
 }
 
 @media (min-width: 1024px) {
   .page-header {
-    background-image: url('../../images/header-pc.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url('../../images/header-pc.jpg');
+  }
+  .page-header.lib-bcg {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url('../../images/lib-bcg-pc.jpg');
   }
 }
 
@@ -111,6 +130,7 @@
   display: flex;
   justify-content: center;
   gap: 15px;
+  margin-top: 46px;
 }
 
 .button.is-hidden {
