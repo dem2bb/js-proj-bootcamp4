@@ -1,0 +1,28 @@
+@import './components/container/container.css';
+@import './components/example/header.css';
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  scroll-behavior: smooth;
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+}
+.list {
+  list-style: none;
+  text-decoration: none;
+}
+
+.img {
+  display: block;
+}
+
+a {
+  text-decoration: none;
+}
