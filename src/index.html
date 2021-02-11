@@ -1,25 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Webpack Starter Kit</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <header>
-      <div class="container"></div>
-    </header>
-    <section>
-      <div class="container"></div>
-    </section>
-    <footer class="footer">
-      <div class="container">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Webpack Starter Kit</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header class="page-header">
+    <div class="container">
+      <nav class="site-nav">
+        <a class="logo" href="./index.html" ">
+                <img class=" logo-svg" src="./images/logo.svg" alt="logo">
+          <span class="logo-text">Filmoteca</span>
+        </a>
+        <ul class="site-nav-link list">
+          <li class="item current">
+            <a href="./index.html">HOME</a>
+          </li>
+          <li class="item">
+            <a href="#">MY LIBRARY</a>
+          </li>
+        </ul>
+      </nav>
+      <form class="search-form" id="search-form">
+        <input class="search-form-input" type="text" name="query" autocomplete="off" placeholder="Movie search" />
+        <span class="search-form-input-error"></span>
+      </form>
+    </div>
+  </header>
+  <section>
+    <div class="container"></div>
+  </section>
+  <footer>
+         <div class="container">
         <p class="footer-description">
           © 2021 | All Rights Reserved | Developed with
           <img
@@ -33,6 +49,7 @@
           <a class="footer-description__link" href="">GoIT Students</a>
         </p>
       </div>
-    </footer>
-  </body>
+  </footer>
+</body>
+
 </html>
