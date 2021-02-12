@@ -4,6 +4,7 @@
 @import './components/button/button.css';
 @import './components/popularMovies/fetch_mov.css';
 @import './components/loader/loader.css';
+@import './components/movieCard/movieCard.css';
 
 *,
 *::before,
