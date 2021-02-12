@@ -5,6 +5,7 @@
 @import './components/popularMovies/fetch_mov.css';
 @import './components/loader/loader.css';
 @import './components/movieCard/movieCard.css';
+@import './components/pagination/pagination.css';
 
 *,
 *::before,

@@ -1,0 +1,51 @@
+/* .repo__technology_fork::before {
+    width: 11px;
+    height: 16px;
+    background: url(../img/fork.svg);
+}*/
+.repos-pagination::before {
+  width: 40px;
+  height: 40px;
+  background: url(../../images/icons/arrow-left.svg);
+}
+.repos-pagination::after {
+  width: 40px;
+  height: 40px;
+  background: url(../../images/icons/arrow-left.svg);
+}
+
+.repos-pagination {
+  margin-top: 50px;
+  /* margin-bottom: 60px; */
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  align-items: center;
+  text-align: center;
+}
+
+.repos-pagination,
+.repos-pagination__link {
+  color: var(--color-1);
+  transition: all 0.3s;
+}
+
+.repos-pagination__link:hover {
+  color: var(--color-5);
+}
+
+.repos-pagination__link,
+.repos-pagination__dots {
+  padding-right: 0.8rem;
+}
+#inc {
+  cursor: pointer;
+}
+#dec {
+  cursor: pointer;
+}
+#arrow-right {
+  transform: rotate(180deg);
+}
