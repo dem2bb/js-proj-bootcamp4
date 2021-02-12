@@ -3,30 +3,27 @@
     <p class="title">{{title}}</p>
     <ul class="list">
         <li class="list-item">
-            <p>Vote / Votes
-                <span class="item-vote">{{vote_average}}</span> /
-                <span class="item-votes">{{vote_count}}</span>
-            </p>
+            <p>Vote / Votes</p>
+            <span class="item-vote">{{vote_average}}</span> /
+            <span class="item-votes">{{vote_count}}</span>
         </li>
         <li class="list-item">
-            <p>Popularity
-                <span class="item-popularity">{{popularity}}</span>
-            </p>
+            <p>Popularity</p>
+            <span class="item-popularity">{{popularity}}</span>
         </li>
         <li class="list-item">
-            <p>Original Title
-                <span class="item-original-title">{{original_title}}</span>
-            </p>
+            <p>Original Title</p>
+            <span class="item-original-title">{{original_title}}</span>
         </li>
         <li class="list-item">
-            <p>Genre
-                {{#each genres}}
-                <span class="item-genre">{{this.name}}</span>
-                {{/each}}
-            </p>
+            <p class="gender">Genre</p>
+            {{#each genres}}
+            <span class="item-genre">{{this.name}}</span>
+            {{/each}}
         </li>
     </ul>
     <p class="about">About</p>
-    <p>{{overview}}</p>
-    <button class="" type="button">add to Watched</button><button class="" type="button">add to queue</button>
+    <p class="about-text">{{overview}}</p>
+    <button class="button btn-to-watched" type="button">add to Watched</button>
+    <button class="button btn-to-queue" type="button">add to queue</button>
 </div>
