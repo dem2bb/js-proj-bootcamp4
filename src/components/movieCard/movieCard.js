@@ -17,17 +17,55 @@ function movieCardMurkup(data) {
   const queue = document.querySelector('.js-queue');
   watched.addEventListener('click', addIntoWatched);
   queue.addEventListener('click', addIntoQueue);
+    if (qwerty.pushMovie === true) {
+      watched.disabled = true;
+  }
 }
 
 function addIntoWatched(e) {
-  const btn = e.target;
-  btn.disabled = true;
-  btn.innerText = 'Added to Watched';
-  localStorage.setItem('WatchedId', JSON.stringify(id));
+  let qwerty = putWatched();
+  const btnW = e.target;
+
+  // btnW.innerText = 'Added to Watched';
+  localStorage.setItem('WatchedId', JSON.stringify(qwerty.movieW));
 }
 function addIntoQueue(e) {
-  const btn = e.target;
-  btn.disabled = true;
-  btn.innerText = 'Added to Queue';
-  localStorage.setItem('QueueId', JSON.stringify(id));
+  let movieQ = getQueue();
+  const index = movieQ.indexOf(id);
+  if(index === -1) {
+    movieQ.push(id);
+  }else{
+    movieQ.splice(index, 1);
+  }
+  const btnQ = e.target;
+  btnQ.disabled = true;
+  btnQ.innerText = 'Added to Queue';
+  localStorage.setItem('QueueId', JSON.stringify(movieQ));
+}
+
+function getQueue() {
+  const movieStorage = localStorage.getItem('QueueId');
+  if (movieStorage !== null) {
+    return JSON.parse(movieStorage);
+  }
+  return [];
+}
+function getWatched() {
+  const movieStorage = localStorage.getItem('WatchedId');
+  if (movieStorage !== null) {
+    return JSON.parse(movieStorage);
+  }
+  return [];
+}
+function putWatched() {
+  let movieW = getWatched();
+  let pushMovie = false;
+  const index = movieW.indexOf(id);
+  if(index === -1) {
+    movieW.push(id);
+    pushMovie = true;
+  }else{
+    movieW.splice(index, 1);
+  }
+  return {movieW, pushMovie }
 }
