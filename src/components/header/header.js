@@ -1,9 +1,10 @@
 refs = {
   linkHome: document.querySelector('.home-js'),
   linkLibrary: document.querySelector('.library-js'),
-  input: document.querySelector('.search-form-input'),
+  inputForm: document.querySelector('.search-form'),
   buttonWatch: document.querySelector('.button.watch'),
   buttonQueue: document.querySelector('.button.queue'),
+  headerBcg: document.querySelector('.page-header')
 };
 
 refs.linkHome.addEventListener('click', headerToggler);
@@ -17,8 +18,9 @@ function headerToggler (event) {
   } else {
     refs.linkHome.classList.toggle('current');
     refs.linkLibrary.classList.toggle('current');
-    refs.input.classList.toggle('is-hidden');
+    refs.inputForm.classList.toggle('is-hidden');
     refs.buttonQueue.classList.toggle('is-hidden');
     refs.buttonWatch.classList.toggle('is-hidden');
+    refs.headerBcg.classList.toggle('lib-bcg');
   }
 }
