@@ -1,19 +1,23 @@
 import filmTpl from '../../templates/movies.hbs';
 import removeLoader from '../loader/remove-loader.js';
 import { genres } from '../../index.js';
+import one from '../../templates/firstPage.hbs';
+import multi from '../../templates/mulltipage.hbs';
 
 const refs = {
   key: 'c1bc6964ae67d43eb6945614299c385c',
   galleryCont: document.querySelector('.film-list'),
 };
+let page = 1;
+let basePagUrl = `https://api.themoviedb.org/3/trending/movie/day?api_key=${refs.key}&page=`;
 export function fetchMovies() {
-  fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=${refs.key}`)
+  fetch(basePagUrl + page)
     .then(res => res.json())
     .then(data => {
       setTimeout(() => {
-      insertItems(data);
-    }, 1000);
-  });
+        insertItems(data);
+      }, 1000);
+    });
 }
 export function insertItems(film) {
   const markup = film.results
@@ -36,4 +40,35 @@ export function fetchGenres() {
     .then(res => res.json())
     .then(data => data.genres)
     .catch(err => console.log(err));
+}
+let pageDiv = document.querySelector('#pagDiv');
+
+function pagMarkup() {
+  if (page === 1) {
+    pageDiv.innerHTML = one({page});
+  }
+  if (page > 1) {
+    pageDiv.innerHTML = multi({page});
+    let decPage = document.querySelector('#dec');
+    decPage.addEventListener('click', decrement);
+  }
+}
+pagMarkup();
+
+let incPage = document.querySelector('#inc');
+incPage.addEventListener('click', increment);
+
+function increment() {
+  page += 1;
+  fetchMovies()
+  pagMarkup();
+  let incPage = document.querySelector('#inc');
+  incPage.addEventListener('click', increment);
+}
+
+function decrement() {
+  if (page > 1) {
+    page -= 1;
+    fetchMovies()
+  }
 }
