@@ -1,4 +1,5 @@
 import filmTpl from '../../templates/movies.hbs';
+import removeLoader from '../loader/remove-loader.js';
 import { genres } from '../../index.js';
 
 const refs = {
@@ -8,15 +9,17 @@ const refs = {
 export function fetchMovies() {
   fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=${refs.key}`)
     .then(res => res.json())
-    .then(data => insertItems(data));
+    .then(data => {
+      setTimeout(() => {
+      insertItems(data);
+    }, 1000);
+  });
 }
-
 export function insertItems(film) {
   const markup = film.results
     .map(item => {
       let movieGenres = [];
       item.genre_ids.forEach(element => {
-        // console.log(genres);
         const genreName = genres.find(item => item.id === element);
         movieGenres.push(genreName.name);
       });
@@ -25,8 +28,8 @@ export function insertItems(film) {
     })
     .join('');
   refs.galleryCont.innerHTML = markup;
+  removeLoader();
 }
-
 export function fetchGenres() {
   const genreListUrl = `https://api.themoviedb.org/3/genre/movie/list?api_key=${refs.key}&language=en-US`;
   return fetch(genreListUrl)
