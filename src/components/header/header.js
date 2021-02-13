@@ -16,7 +16,6 @@ function headerToggler(event) {
   if (event.currentTarget.classList.contains('current')) {
     return;
   } else {
-    refs.linkLibrary.classList.add('current');
     refs.linkHome.classList.toggle('current');
     refs.linkLibrary.classList.toggle('current');
     refs.inputForm.classList.toggle('is-hidden');
