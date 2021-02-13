@@ -34,6 +34,8 @@ export function insertItems(film) {
         movieGenres.push(genreName.name);
       });
       item.genre_ids = movieGenres;
+      item.vote_average = item.vote_average.toFixed(1)
+      item.release_date=parseInt(item.release_date)
       return filmTpl(item);
     })
     .join('');
