@@ -17,32 +17,37 @@ function movieCardMurkup(data) {
   const queue = document.querySelector('.js-queue');
   watched.addEventListener('click', addIntoWatched);
   queue.addEventListener('click', addIntoQueue);
-    if (qwerty.pushMovie === true) {
-      watched.disabled = true;
+  const index = id;
+  const movieWatched = getWatched();
+  const movieQueue = getQueue();
+  for (let item of movieWatched) {
+    if (index === item) {
+      watched.innerHTML = 'Added to Watched';
+      watched.classList.add('js-clicked');
+    }
+  }
+  for (let item of movieQueue) {
+    if (index === item) {
+      queue.innerHTML = 'Added to Queue';
+      queue.classList.add('js-clicked');
+    }
   }
 }
 
 function addIntoWatched(e) {
-  let qwerty = putWatched();
-  const btnW = e.target;
-
-  // btnW.innerText = 'Added to Watched';
-  localStorage.setItem('WatchedId', JSON.stringify(qwerty.movieW));
+  let getWatchedMovie = putWatched();
+  const btn = e.target;
+  btn.innerHTML = (btn.innerHTML === 'Added to Watched') ? btn.innerHTML = 'Add to Watched' : btn.innerHTML = 'Added to Watched';
+  (btn.classList.contains('js-clicked')) ? btn.classList.remove('js-clicked') : btn.classList.add('js-clicked');
+  localStorage.setItem('WatchedId', JSON.stringify(getWatchedMovie.movie));
 }
 function addIntoQueue(e) {
-  let movieQ = getQueue();
-  const index = movieQ.indexOf(id);
-  if(index === -1) {
-    movieQ.push(id);
-  }else{
-    movieQ.splice(index, 1);
-  }
-  const btnQ = e.target;
-  btnQ.disabled = true;
-  btnQ.innerText = 'Added to Queue';
-  localStorage.setItem('QueueId', JSON.stringify(movieQ));
+  let getQueueMovie = putQueue();
+  const btn = e.target;
+  btn.innerHTML = (btn.innerHTML === 'Added to Queue') ? btn.innerHTML = 'Add to Queue' : btn.innerHTML = 'Added to Queue';
+  (btn.classList.contains('js-clicked')) ? btn.classList.remove('js-clicked') : btn.classList.add('js-clicked');
+  localStorage.setItem('QueueId', JSON.stringify(getQueueMovie.movie));
 }
-
 function getQueue() {
   const movieStorage = localStorage.getItem('QueueId');
   if (movieStorage !== null) {
@@ -58,14 +63,26 @@ function getWatched() {
   return [];
 }
 function putWatched() {
-  let movieW = getWatched();
+  let movie = getWatched();
   let pushMovie = false;
-  const index = movieW.indexOf(id);
+  const index = movie.indexOf(id);
   if(index === -1) {
-    movieW.push(id);
+    movie.push(id);
     pushMovie = true;
   }else{
-    movieW.splice(index, 1);
+    movie.splice(index, 1);
   }
-  return {movieW, pushMovie }
+  return {movie, pushMovie }
+}
+function putQueue() {
+  let movie = getQueue();
+  let pushMovie = false;
+  const index = movie.indexOf(id);
+  if(index === -1) {
+    movie.push(id);
+    pushMovie = true;
+  }else{
+    movie.splice(index, 1);
+  }
+  return {movie, pushMovie }
 }
