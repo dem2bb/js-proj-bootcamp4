@@ -4,18 +4,19 @@ refs = {
   inputForm: document.querySelector('.search-form'),
   buttonWatch: document.querySelector('.button.watch'),
   buttonQueue: document.querySelector('.button.queue'),
-  headerBcg: document.querySelector('.page-header')
+  headerBcg: document.querySelector('.page-header'),
 };
 
 refs.linkHome.addEventListener('click', headerToggler);
 
 refs.linkLibrary.addEventListener('click', headerToggler);
 
-function headerToggler (event) {
+function headerToggler(event) {
   event.preventDefault();
   if (event.currentTarget.classList.contains('current')) {
     return;
   } else {
+    refs.linkLibrary.classList.add('current');
     refs.linkHome.classList.toggle('current');
     refs.linkLibrary.classList.toggle('current');
     refs.inputForm.classList.toggle('is-hidden');

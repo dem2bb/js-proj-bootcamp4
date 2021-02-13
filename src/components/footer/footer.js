@@ -1,10 +1,9 @@
 import poky from '../../images/poky.jpg';
-refs = {
-  students: document.querySelector('.footer-description__link'),
-  main: document.querySelector('.main-cont'),
-};
 
-refs.students.addEventListener('click', openModal);
+const students = document.querySelector('.footer-description__link');
+const main = document.querySelector('.main-cont');
+
+students.addEventListener('click', openModal);
 
 const img = '../../images/poky.jpg';
 
@@ -80,7 +79,7 @@ function openModal(event) {
       </ul>
       <button class='button-footer button is-active'>Close</button>
       </div>`;
-  refs.main.insertAdjacentHTML('beforeend', markup);
+  main.insertAdjacentHTML('beforeend', markup);
 
   const closeBtnRef = document.querySelector('.modal > button');
   const modalWindowRef = document.querySelector('.modal');

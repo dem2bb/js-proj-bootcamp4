@@ -17,4 +17,3 @@ fetchGenres().then(res => {
   genres = res;
   fetchMovies();
 });
-
