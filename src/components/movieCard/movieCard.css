@@ -9,9 +9,7 @@
   font-weight: 500;
   font-size: 20px;
   line-height: 23px;
-
   color: #000000;
-
   margin-bottom: 20px;
 }
 
@@ -19,8 +17,8 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
-
   color: #8c8c8c;
+  display: flex;
 }
 
 .list-item:not(:last-child) {
@@ -29,7 +27,6 @@
 
 .item-vote {
   margin-left: 41px;
-
   display: inline-block;
   width: 36px;
   height: 16px;
@@ -45,7 +42,6 @@
   background: #f7f7f7;
   text-align: center;
   border-radius: 5px;
-
   color: #000000;
 }
 .item-popularity {
@@ -57,19 +53,63 @@
   color: #000000;
 }
 .item-genre {
-  margin-left: 76px;
   color: #000000;
+}
+.gender + span {
+  margin-left: 76px;
 }
 
 .about {
   margin-top: 20px;
   margin-bottom: 10px;
-
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
   text-transform: uppercase;
 }
+.about-text {
+  width: 279px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 20px;
+  margin-bottom: 40px;
+}
+
+.btn-to-watched {
+  background-color: #ff6b01;
+  text-transform: uppercase;
+}
+.btn-to-queue {
+  background-color: white;
+  text-transform: uppercase;
+  border: 1px solid #000000;
+  color: black;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    display: flex;
+  }
+  .img-movie-card {
+    width: 294px;
+    margin-bottom: 0;
+  }
+  .wrapper {
+    margin-left: 30px;
+  }
+  .about-text {
+    margin-bottom: 20px;
+  }
+  .btn-to-queue {
+    margin-left: 15px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .img-movie-card {
+    width: 426px;
+    height: 514px;
+  }
 .js-clicked {
   background-color: green;
 }
