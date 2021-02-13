@@ -20,7 +20,6 @@ export function fetchMovies() {
     .then(res => res.json())
     .then(data => {
       setTimeout(() => {
-        console.log(data);
         insertItems(data);
       }, 1000);
     });
@@ -34,8 +33,8 @@ export function insertItems(film) {
         movieGenres.push(genreName.name);
       });
       item.genre_ids = movieGenres;
-      item.vote_average = item.vote_average.toFixed(1)
-      item.release_date=parseInt(item.release_date)
+      item.vote_average = item.vote_average.toFixed(1);
+      item.release_date = parseInt(item.release_date);
       return filmTpl(item);
     })
     .join('');
