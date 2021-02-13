@@ -1,5 +1,6 @@
-import filmTpl from '../../templates/movies.hbs';
+// import filmTpl from '../../templates/movies.hbs';
 import search from './searchByName.js';
+import { insertItems } from '../popularMovies/fetch.js';
 
 const refs = {
   galleryCont: document.querySelector('.film-list'),
@@ -7,10 +8,10 @@ const refs = {
   input: document.querySelector('.search-form-input'),
 };
 
-function insertItems(film) {
-  const markup = film.results.map(item => filmTpl(item)).join('');
-  refs.galleryCont.innerHTML = markup;
-}
+// function insertItems(film) {
+//   const markup = film.results.map(item => filmTpl(item)).join('');
+//   refs.galleryCont.innerHTML = markup;
+// }
 
 function searchPrint(event) {
   event.preventDefault();

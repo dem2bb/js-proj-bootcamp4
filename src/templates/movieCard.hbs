@@ -1,0 +1,32 @@
+<div class="container">
+    <img class="img-movie-card" src="https://image.tmdb.org/t/p/w300{{poster_path}}" alt="{{title}}">
+    <p class="title">{{title}}</p>
+    <ul class="list">
+        <li class="list-item">
+            <p>Vote / Votes
+                <span class="item-vote">{{vote_average}}</span> /
+                <span class="item-votes">{{vote_count}}</span>
+            </p>
+        </li>
+        <li class="list-item">
+            <p>Popularity
+                <span class="item-popularity">{{popularity}}</span>
+            </p>
+        </li>
+        <li class="list-item">
+            <p>Original Title
+                <span class="item-original-title">{{original_title}}</span>
+            </p>
+        </li>
+        <li class="list-item">
+            <p>Genre
+                {{#each genres}}
+                <span class="item-genre">{{this.name}}</span>
+                {{/each}}
+            </p>
+        </li>
+    </ul>
+    <p class="about">About</p>
+    <p>{{overview}}</p>
+    <button class="" type="button">add to Watched</button><button class="" type="button">add to queue</button>
+</div>
