@@ -9,12 +9,18 @@ const refs = {
   galleryCont: document.querySelector('.film-list'),
 };
 let page = 1;
+let pageNext;
+let pageNext2;
+let pagePrev;
+let pagePrev2;
+
 let basePagUrl = `https://api.themoviedb.org/3/trending/movie/day?api_key=${refs.key}&page=`;
 export function fetchMovies() {
   fetch(basePagUrl + page)
     .then(res => res.json())
     .then(data => {
       setTimeout(() => {
+        console.log(data);
         insertItems(data);
       }, 1000);
     });
@@ -42,15 +48,37 @@ export function fetchGenres() {
     .catch(err => console.log(err));
 }
 let pageDiv = document.querySelector('#pagDiv');
-
+let url = '../../images/icons/arrow-left.svg';
 function pagMarkup() {
   if (page === 1) {
-    pageDiv.innerHTML = one({page});
+    pageDiv.innerHTML = one({ page, url });
+
+    // document.querySelector("#inc").insertAdjacentHTML('afterbegin', `<svg src="../../images/icons/arrow-left.svg"></svg>`);
   }
   if (page > 1) {
-    pageDiv.innerHTML = multi({page});
+    pageNext = page + 1;
+    pageNext2 = page + 2;
+    pageDiv.innerHTML = multi({
+      page,
+      url,
+      pageNext,
+      pageNext2,
+      pagePrev,
+      pagePrev2,
+    });
+    pagePrev = '';
+    pagePrev2 = '';
+
+    // pageNext.innerHTML = page+1;
+    // pageNext2.innerHTML = page+2;
+    // pagePrev.innerHTML = page-1;
+    // pagePrev2.innerHTML = page-2;
     let decPage = document.querySelector('#dec');
     decPage.addEventListener('click', decrement);
+  }
+  if (page > 2) {
+    pagePrev = page - 1;
+    pagePrev2 = page - 2;
   }
 }
 pagMarkup();
@@ -60,7 +88,7 @@ incPage.addEventListener('click', increment);
 
 function increment() {
   page += 1;
-  fetchMovies()
+  fetchMovies();
   pagMarkup();
   let incPage = document.querySelector('#inc');
   incPage.addEventListener('click', increment);
@@ -69,6 +97,9 @@ function increment() {
 function decrement() {
   if (page > 1) {
     page -= 1;
-    fetchMovies()
+    fetchMovies();
+    pagMarkup();
   }
+  let incPage = document.querySelector('#inc');
+  incPage.addEventListener('click', increment);
 }

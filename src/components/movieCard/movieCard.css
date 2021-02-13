@@ -110,4 +110,6 @@
     width: 426px;
     height: 514px;
   }
+.js-clicked {
+  background-color: green;
 }
