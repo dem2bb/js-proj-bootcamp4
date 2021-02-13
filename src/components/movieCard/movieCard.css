@@ -106,10 +106,6 @@
 }
 
 @media screen and (min-width: 1024px) {
-  .img-movie-card {
-    width: 426px;
-    height: 514px;
-  }
   .js-clicked {
     background-color: green;
   }
