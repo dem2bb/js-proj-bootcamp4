@@ -78,12 +78,14 @@
 .btn-to-watched {
   background-color: #ff6b01;
   text-transform: uppercase;
+  outline: none;
 }
 .btn-to-queue {
   background-color: white;
   text-transform: uppercase;
   border: 1px solid #000000;
   color: black;
+  outline: none;
 }
 
 @media screen and (min-width: 768px) {
@@ -112,5 +114,7 @@
   }
   .js-clicked {
     background-color: green;
+    color: white;
+    outline: none;
   }
 }
