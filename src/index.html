@@ -13,20 +13,34 @@
 <body>
   <header class="page-header">
     <div class="container">
+
       <nav class="site-nav">
         <a class="logo" href="./index.html" ">
-                <img class=" logo-svg" src="./images/logo.svg" alt="logo">
+                  <img class=" logo-svg" src="./images/logo.svg" alt="logo">
           <span class="logo-text">Filmoteca</span>
         </a>
         <ul class="site-nav-link list">
           <li class="item home-js current">
-            <a href="./index.html">HOME</a>
+            <a href="./index.html"><span class="english">HOME</span><span class="russian" hidden>ГЛАВНАЯ</span></a>
           </li>
           <li class="item library-js">
-            <a href="#">MY LIBRARY</a>
+            <a href="#"><span class="english">MY LIBRARY</span><span class="russian" hidden>МОЯ БИБЛИОТЕКА</span></a>
+          </li>
+          <li class="theme-switch__control">
+
+            <input class="theme-switch__toggle" type="checkbox" name="theme" id="theme-switch-toggle"
+              aria-label="Переключить между тёмной и светлой темой" />
+            <label aria-hidden="true" class="theme-switch__track" for="theme-switch-toggle">
+            </label>
+            <div aria-hidden="true" class="theme-switch__marker"></div>
+
           </li>
         </ul>
+
       </nav>
+
+
+
       <form class="search-form" id="search-form">
         <input class="search-form-input" type="text" name="query" autocomplete="off" placeholder="Movie search" />
         <span class="search-form-input-error"></span>
@@ -35,6 +49,7 @@
         <button class="button watch is-hidden is-active" type="button">WATCHED</button>
         <button class="button queue is-hidden" type="button">QUEUE</button>
       </div>
+
 
 
     </div>
@@ -61,4 +76,5 @@
     </div>
   </footer>  
 </body>
+
 </html>
