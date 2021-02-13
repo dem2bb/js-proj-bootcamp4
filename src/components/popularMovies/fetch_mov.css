@@ -13,6 +13,7 @@
   margin: 0 auto;
   margin-bottom: 31px;
   cursor: pointer;
+  width: 274px;
 }
 .gallery-list__img {
   border-radius: 5px;
