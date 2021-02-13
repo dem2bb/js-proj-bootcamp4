@@ -9,10 +9,7 @@
   font-weight: 500;
   font-size: 20px;
   line-height: 23px;
-  text-transform: uppercase;
-
   color: #000000;
-
   margin-bottom: 20px;
 }
 
@@ -20,9 +17,7 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
-
   color: #8c8c8c;
-
   display: flex;
 }
 
@@ -32,7 +27,6 @@
 
 .item-vote {
   margin-left: 41px;
-
   display: inline-block;
   width: 36px;
   height: 16px;
@@ -48,7 +42,6 @@
   background: #f7f7f7;
   text-align: center;
   border-radius: 5px;
-
   color: #000000;
 }
 .item-popularity {
@@ -57,7 +50,6 @@
 }
 .item-original-title {
   margin-left: 39px;
-  text-transform: uppercase;
   color: #000000;
 }
 .item-genre {
@@ -70,7 +62,6 @@
 .about {
   margin-top: 20px;
   margin-bottom: 10px;
-
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
@@ -78,11 +69,9 @@
 }
 .about-text {
   width: 279px;
-
   font-weight: 500;
   font-size: 12px;
   line-height: 20px;
-
   margin-bottom: 40px;
 }
 
@@ -91,13 +80,34 @@
   text-transform: uppercase;
 }
 .btn-to-queue {
-  /* margin-left: 15px; */
   background-color: white;
   text-transform: uppercase;
   border: 1px solid #000000;
   color: black;
 }
 
-@media screen and (min-width: 768px){
-  
+@media screen and (min-width: 768px) {
+  .container {
+    display: flex;
+  }
+  .img-movie-card {
+    width: 294px;
+    margin-bottom: 0;
+  }
+  .wrapper {
+    margin-left: 30px;
+  }
+  .about-text {
+    margin-bottom: 20px;
+  }
+  .btn-to-queue {
+    margin-left: 15px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .img-movie-card {
+    width: 426px;
+    height: 514px;
+  }
 }
