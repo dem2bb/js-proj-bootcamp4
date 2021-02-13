@@ -21,4 +21,85 @@
     height: 77px;
     padding: 31px 0 34px 0;
   }
+
+  .modalWindow-item {
+    width: 25%;
+  }
+}
+
+.main-cont {
+  position: relative;
+}
+
+.modal {
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center; */
+  position: fixed;
+
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  /* background-color: #fff; */
+  background-color: rgb(172, 161, 161);
+  z-index: 1;
+  /* animation: ourteam 0.7s linear; */
+}
+
+/* @keyframes ourteam {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+} */
+
+.modalWindow-list {
+  display: flex;
+  flex-wrap: wrap;
+  /* justify-content: space-around; */
+  list-style: none;
+  /* text-align: center; */
+}
+
+.modalWindow-item {
+  text-align: center;
+  margin-bottom: 30px;
+  width: 48%;
+  height: 300px;
+  /* box-shadow: -10px 10px 20px rgba(224, 65, 65, 0.5); */
+}
+
+.our-team__name {
+  font-size: 32px;
+  padding: 30px 0;
+  text-align: center;
+  color: #ff6b01;
+}
+
+.our-team__picture {
+  margin-bottom: 30px;
+  border-radius: 50%;
+}
+
+.teammates-name {
+  margin-bottom: 30px;
+}
+
+.our-team__position {
+  font-weight: 500;
+  margin-bottom: 30px;
+}
+
+.button-footer {
+  display: block;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .modalWindow-item {
+    width: 25%;
+  }
 }
