@@ -3,7 +3,6 @@ refs = {
   students: document.querySelector('.footer-description__link'),
   main: document.querySelector('.main-cont'),
 };
-console.log(refs.main);
 
 refs.students.addEventListener('click', openModal);
 
