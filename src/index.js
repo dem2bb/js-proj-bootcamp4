@@ -7,6 +7,7 @@ import { fetchMovies } from './components/popularMovies/fetch.js';
 import { fetchGenres } from './components/popularMovies/fetch.js';
 import './components/movieCard/movieCard.js';
 import './components/popularMovies/openFilm.js';
+import './components/language-set/language-set.js';
 
 export let genres = [];
 
