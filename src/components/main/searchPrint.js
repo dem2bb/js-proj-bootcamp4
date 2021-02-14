@@ -1,11 +1,12 @@
 // import filmTpl from '../../templates/movies.hbs';
 import search from './searchByName.js';
-import { insertItems } from '../popularMovies/fetch.js';
+import { insertItems, page } from '../popularMovies/fetch.js';
 
-const refs = {
+export const refs = {
   galleryCont: document.querySelector('.film-list'),
   searchForm: document.querySelector('#search-form'),
   input: document.querySelector('.search-form-input'),
+  key: 'c1bc6964ae67d43eb6945614299c385c',
 };
 
 // function insertItems(film) {
@@ -15,7 +16,7 @@ const refs = {
 
 function searchPrint(event) {
   event.preventDefault();
-  search.searchFilms(refs.input.value).then(data => insertItems(data));
+  search.searchFilms(refs.input.value, page).then(data => insertItems(data));
 }
 
 refs.searchForm.addEventListener('submit', searchPrint);
