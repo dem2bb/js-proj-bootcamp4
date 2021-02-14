@@ -1,3 +1,6 @@
+import "@pnotify/core/dist/PNotify.css";
+import "@pnotify/core/dist/BrightTheme.css";
+import { error} from "@pnotify/core";
 import filmTpl from '../../templates/movies.hbs';
 import removeLoader from '../loader/remove-loader.js';
 import { genres } from '../../index.js';
@@ -30,6 +33,14 @@ export function fetchMovies() {
 }
 
 export function insertItems(film) {
+  if (film.results.length === 0) {
+    error({
+      title:'Film not found.',
+    text: 'Check film name and try again.',
+    delay: 3000,
+    closerHover: true,
+  })
+  }
   const markup = film.results
     .map(item => {
       let movieGenres = [];
