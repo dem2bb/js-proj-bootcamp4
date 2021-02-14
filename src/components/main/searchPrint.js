@@ -1,4 +1,4 @@
-// import filmTpl from '../../templates/movies.hbs';
+import debounce from "lodash/debounce";
 import search from './searchByName.js';
 import { insertItems } from '../popularMovies/fetch.js';
 
@@ -19,3 +19,4 @@ function searchPrint(event) {
 }
 
 refs.searchForm.addEventListener('submit', searchPrint);
+refs.input.addEventListener('input', debounce(searchPrint, 500));
