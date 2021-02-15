@@ -9,14 +9,10 @@ const arrHtml = [];
 
 function renderMyLibrary() {
   if (arrHtml.length > 0) {
-    console.log('queue');
     arrHtml.length = 0;
   }
   const libraryId = getWatched();
-  libraryId.forEach(
-    item => fetchItem(item),
-    //console.log(arrHtml);
-  );
+  libraryId.forEach(item => fetchItem(item));
   setTimeout(() => rend(arrHtml), 300);
 }
 
@@ -57,10 +53,6 @@ function fetchItem(id) {
   )
     .then(response => response.json())
     .then(data => movie(data))
-    .then(
-      item => (a = item),
-      //console.log(a);
-      //return a;
-    )
+    .then(item => (a = item))
     .then(a => arrHtml.push(a));
 }
