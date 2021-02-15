@@ -2,6 +2,7 @@ import { languageData } from '../language-set/language-set.js';
 import movieCard from '../../templates/movieCard.hbs';
 import movieCardRu from '../../templates/movieCardRu.hbs';
 
+
 const mainRef = document.querySelector('main');
 let id = [];
 export function apiMovieCard(movieId) {
@@ -78,6 +79,7 @@ function getWatched() {
   }
   return [];
 }
+//console.log();
 function putWatched() {
   let movie = getWatched();
   let pushMovie = false;
@@ -90,6 +92,7 @@ function putWatched() {
   }
   return { movie, pushMovie };
 }
+//console.log(putWatched());
 function putQueue() {
   let movie = getQueue();
   let pushMovie = false;
@@ -102,3 +105,6 @@ function putQueue() {
   }
   return { movie, pushMovie };
 }
+
+export { getWatched, getQueue };
+
