@@ -11,8 +11,7 @@ refs.linkHome.addEventListener('click', headerToggler);
 
 refs.linkLibrary.addEventListener('click', headerToggler);
 
-function headerToggler(event) {
-  event.preventDefault();
+function headerToggler (event) {
   if (event.currentTarget.classList.contains('current')) {
     return;
   } else {
@@ -22,5 +21,8 @@ function headerToggler(event) {
     refs.buttonQueue.classList.toggle('is-hidden');
     refs.buttonWatch.classList.toggle('is-hidden');
     refs.headerBcg.classList.toggle('lib-bcg');
+    if (document.querySelector('.home-js')) {
+      console.log('home');
+    }
   }
 }
