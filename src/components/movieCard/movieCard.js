@@ -1,5 +1,6 @@
 import { languageData } from '../language-set/language-set.js';
 import movieCard from '../../templates/movieCard.hbs';
+import playerMarkup from '../../templates/playerMarkup.hbs';
 import movieCardRu from '../../templates/movieCardRu.hbs';
 
 
@@ -17,6 +18,9 @@ export function apiMovieCard (movieId) {
 }
 
 function movieCardMurkup (data) {
+    const youTubekeyApi = 'AIzaSyAS0B9lwe077Aii-NL9mosAvqPueKjnz0E';
+  const youTubebaseUrl = `https://www.googleapis.com/youtube/v3/search?q=${data.original_title}&key=${youTubekeyApi}&part=snippet,id&order=date&maxResults=1`;
+  document.querySelector('#aa').addEventListener('click', openVideo);
   languageData.language === 'RU'
     ? (mainRef.innerHTML = movieCardRu(data))
     : (mainRef.innerHTML = movieCard(data));
@@ -51,8 +55,26 @@ function movieCardMurkup (data) {
       }
     }
   }
+  function youtube() {
+    fetch(youTubebaseUrl)
+      .then(res => res.json())
+      .then(data => data.items[0].id.videoId)
+      .then(
+        data =>
+          (document.querySelector(
+            '#playerContainer',
+          ).innerHTML = `<div id="overlay" hidden><div id="modal_form" class="playerDiv" hidden><iframe id="player" type="text/html" width="640" height="360"
+          src="https://www.youtube.com/embed/${data}?enablejsapi=1"
+          frameborder="0"></iframe></div><button class="modal_close" type="button">Закрыть</button></div>`),
+      );
+  }
+  youtube();
 }
-
+function openVideo() {
+  console.log('Открыть модалку с видео');
+  document.querySelector('.playerDiv').hidden = false;
+  document.querySelector('#overlay').hidden = false;
+}
 function addIntoWatched (e) {
   let getWatchedMovie = putWatched();
   const btn = e.target;
@@ -80,7 +102,6 @@ function addIntoWatched (e) {
 function addIntoQueue (e) {
   let getQueueMovie = putQueue();
   const btn = e.target;
-
   if (languageData.language === 'EN') {
     btn.innerHTML =
       btn.innerHTML === 'Added to Queue'
@@ -141,6 +162,4 @@ function putQueue() {
   }
   return { movie, pushMovie };
 }
-
 export { getWatched, getQueue };
-
