@@ -6,6 +6,7 @@
 @import './components/loader/loader.css';
 @import './components/movieCard/movieCard.css';
 @import './components/pagination/pagination.css';
+@import './components/movieCard/socials.css';
 
 *,
 *::before,
