@@ -1,6 +1,6 @@
-import "@pnotify/core/dist/PNotify.css";
-import "@pnotify/core/dist/BrightTheme.css";
-import { error} from "@pnotify/core";
+import '@pnotify/core/dist/PNotify.css';
+import '@pnotify/core/dist/BrightTheme.css';
+import { error } from '@pnotify/core';
 import filmTpl from '../../templates/movies.hbs';
 import removeLoader from '../loader/remove-loader.js';
 import { genres } from '../../index.js';
@@ -23,7 +23,10 @@ export function fetchMovies() {
       toggleChosen();
     });
   } else {
-    fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=${refs.key}&page=` + page)
+    fetch(
+      `https://api.themoviedb.org/3/trending/movie/day?api_key=${refs.key}&page=` +
+        page,
+    )
       .then(res => res.json())
       .then(data => {
         insertItems(data);
@@ -35,11 +38,11 @@ export function fetchMovies() {
 export function insertItems(film) {
   if (film.results.length === 0) {
     error({
-      title:'Film not found.',
-    text: 'Check film name and try again.',
-    delay: 3000,
-    closerHover: true,
-  })
+      title: 'Film not found.',
+      text: 'Check film name and try again.',
+      delay: 3000,
+      closerHover: true,
+    });
   }
   const markup = film.results
     .map(item => {
