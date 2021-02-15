@@ -1,37 +1,58 @@
 const refLanguageSet = document.querySelector('.theme-switch__toggle');
 const refEnglish = document.querySelectorAll('.english');
 const refRussian = document.querySelectorAll('.russian');
+const input = document.querySelector('.search-form > input');
+import { fetchMovies } from '../popularMovies/fetch.js';
 
-// const Languge = {
-//   ENG: 'english',
-//   RUS: 'russian',
-// };
+const savedLanguage = localStorage.getItem('language');
+export const languageData = JSON.parse(savedLanguage) || {
+  language: 'EN',
+  fetchLanguage: 'en-EN',
+};
 
-// const getLanguage = () => {
-//   const savedLanguage = localStorage.getItem('languge');
-//   savedLanguage === Languge.RUS ? (refLanguageSet.checked = true) : '';
-//   if (savedLanguage === Languge.RUS) {
-//     refEnglish.forEach(e => {
-//       e.setAttribute('hidden', true);
-//     });
-//   }
-// };
+function setLanguage () {
+  if (languageData.language === 'EN') {
+    refRussian.forEach(e => {
+      e.classList.add('is-hidden');
+      input.placeholder = 'Movie search';
+      refLanguageSet.checked = false;
+    });
+  } else if (languageData.language === 'RU') {
+    refEnglish.forEach(e => {
+      e.classList.add('is-hidden');
+      input.placeholder = 'Поиск фильмов';
+      refLanguageSet.checked = true;
+    });
+  }
+}
 
-// const changeLanguge = () => {
-//   localStorage.setItem('languge', languageReplace());
-//   refBody.className = languageReplace();
-// };
-// const languageReplace = () =>
-//   refBody.className === Theme.LIGHT ? Theme.DARK : Theme.LIGHT;
+function changeLanguage (event) {
+  if (languageData.language === 'EN') {
+    refRussian.forEach(e => {
+      e.classList.remove('is-hidden');
+    });
+    refEnglish.forEach(e => {
+      e.classList.add('is-hidden');
+    });
+    input.placeholder = 'Поиск фильмов';
+    languageData.language = 'RU';
+    languageData.fetchLanguage = 'ru-RU';
+    localStorage.setItem('language', JSON.stringify(languageData));
+    fetchMovies();
+  } else if (languageData.language === 'RU') {
+    refRussian.forEach(e => {
+      e.classList.add('is-hidden');
+    });
+    refEnglish.forEach(e => {
+      e.classList.remove('is-hidden');
+    });
+    input.placeholder = 'Movie search';
+    languageData.language = 'EN';
+    languageData.fetchLanguage = 'en-US';
+    localStorage.setItem('language', JSON.stringify(languageData));
+    fetchMovies();
+  }
+}
 
-// getLanguage();
-// refLanguageSet.addEventListener('click', changeLanguge);
-
-// // refEnglish.forEach(e => {
-// //   console.dir(e);
-// //   console.log(e.hasAttribute('hidden'));
-// // });
-// // refRussian.some(e => {
-// //   console.dir(e);
-// //   console.log(e.hasAttribute('hidden'));
-// // });
+setLanguage();
+refLanguageSet.addEventListener('click', changeLanguage);
