@@ -1,8 +1,15 @@
 .footer {
-  background-color: #f7f7f7;
+  background-color: #e9e0e0;
   text-align: center;
   padding: 28px 0 30px 0;
   height: 100px;
+}
+
+.footer a {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 16px;
+  line-height: 19px;
+  color: #545454;
 }
 
 .footer-description {
@@ -14,6 +21,12 @@
 .footer-description__icon {
   margin-left: 3px;
   margin-right: 3px;
+}
+
+@media (max-width: 767px) {
+  .modalWindow-item {
+    width: 48%;
+  }
 }
 
 @media (min-width: 768px) {
@@ -32,17 +45,18 @@
 }
 
 .overlay {
-  position: absolute;
+  position: fixed;
+  display: none;
+  left: 0;
+  top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(172, 161, 161, 0.507);
+  background-color: rgba(182, 160, 160, 0.562);
   z-index: 2;
 }
 
 .modal {
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center; */
+  font-family: 'Noto Sans JP', sans-serif;
   position: fixed;
 
   bottom: 50%;
@@ -52,39 +66,36 @@
   height: 90%;
   background-color: #fff;
   z-index: 1;
-  /* animation: ourteam 0.7s linear; */
+  overflow-y: scroll;
+  padding-bottom: 30px;
+  animation: our-team 0.7s linear;
 }
 
-/* @keyframes ourteam {
-  from {
-    transform: translateY(-100%);
+@keyframes our-team {
+  0% {
+    opacity: 0;
   }
-  to {
-    transform: translateY(0);
+  100% {
+    opacity: 1;
   }
-} */
+}
 
 .modalWindow-list {
   display: flex;
   flex-wrap: wrap;
-  /* justify-content: space-around; */
   list-style: none;
-  /* text-align: center; */
 }
 
 .modalWindow-item {
   text-align: center;
-  margin-bottom: 30px;
-  width: 48%;
   height: 300px;
-  /* box-shadow: -10px 10px 20px rgba(224, 65, 65, 0.5); */
 }
 
 .our-team__name {
   font-size: 32px;
   padding: 30px 0;
   text-align: center;
-  color: #ff6b01;
+  color: #12a837;
 }
 
 .our-team__picture {
@@ -104,10 +115,4 @@
 .button-footer {
   display: block;
   margin: 0 auto;
-}
-
-@media (min-width: 768px) {
-  .modalWindow-item {
-    width: 25%;
-  }
 }
