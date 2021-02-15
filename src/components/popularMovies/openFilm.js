@@ -19,3 +19,15 @@ function imgOpen (event) {
 }
 
 refs.ul.addEventListener('click', imgOpen);
+
+function addBoxShadow(event) {
+  if (event.target.parentNode.nodeName !== 'LI') {
+    return;
+  }
+  event.target.parentNode.classList.add('box-shadow');
+}
+function removeBoxShadow(event) {
+  event.target.parentNode.classList.remove('box-shadow');
+}
+refs.ul.addEventListener('mouseover', addBoxShadow);
+refs.ul.addEventListener('mouseout', removeBoxShadow);

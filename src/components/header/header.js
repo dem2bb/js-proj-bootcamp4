@@ -15,14 +15,11 @@ function headerToggler (event) {
   if (event.currentTarget.classList.contains('current')) {
     return;
   } else {
-    refs.linkHome.classList.toggle('current');
-    refs.linkLibrary.classList.toggle('current');
-    refs.inputForm.classList.toggle('is-hidden');
-    refs.buttonQueue.classList.toggle('is-hidden');
-    refs.buttonWatch.classList.toggle('is-hidden');
-    refs.headerBcg.classList.toggle('lib-bcg');
-    if (document.querySelector('.home-js')) {
-      console.log('home');
-    }
-  }
+  refs.linkHome.classList.toggle('current');
+  refs.linkLibrary.classList.toggle('current');
+  refs.inputForm.classList.toggle('is-hidden');
+  refs.buttonQueue.classList.toggle('is-hidden');
+  refs.buttonWatch.classList.toggle('is-hidden');
+  refs.headerBcg.classList.toggle('lib-bcg');
+}
 }
