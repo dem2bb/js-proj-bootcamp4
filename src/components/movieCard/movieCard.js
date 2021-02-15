@@ -3,10 +3,9 @@ import movieCard from '../../templates/movieCard.hbs';
 import playerMarkup from '../../templates/playerMarkup.hbs';
 import movieCardRu from '../../templates/movieCardRu.hbs';
 
-
 const mainRef = document.querySelector('main');
 let id = [];
-export function apiMovieCard (movieId) {
+export function apiMovieCard(movieId) {
   id = movieId;
   console.log(id);
   const keyApi = '65999cd4dc4e9b42ad69f2cfa64d7f94';
@@ -17,13 +16,13 @@ export function apiMovieCard (movieId) {
     .catch(err => console.log(err));
 }
 
-function movieCardMurkup (data) {
-    const youTubekeyApi = 'AIzaSyAS0B9lwe077Aii-NL9mosAvqPueKjnz0E';
+function movieCardMurkup(data) {
+  const youTubekeyApi = 'AIzaSyARBacO_tdsZWQ8R_fw3eh8MtpLaz6SaNw';
   const youTubebaseUrl = `https://www.googleapis.com/youtube/v3/search?q=${data.original_title}&key=${youTubekeyApi}&part=snippet,id&order=date&maxResults=1`;
-  document.querySelector('#aa').addEventListener('click', openVideo);
   languageData.language === 'RU'
     ? (mainRef.innerHTML = movieCardRu(data))
     : (mainRef.innerHTML = movieCard(data));
+  document.querySelector('#aa').addEventListener('click', openVideo);
   const watched = document.querySelector('.js-watched');
   const queue = document.querySelector('.js-queue');
   watched.addEventListener('click', addIntoWatched);
@@ -58,7 +57,10 @@ function movieCardMurkup (data) {
   function youtube() {
     fetch(youTubebaseUrl)
       .then(res => res.json())
-      .then(data => data.items[0].id.videoId)
+      .then(data => {
+        console.log(data);
+        return data.items[0].id.videoId;
+      })
       .then(
         data =>
           (document.querySelector(
@@ -75,7 +77,7 @@ function openVideo() {
   document.querySelector('.playerDiv').hidden = false;
   document.querySelector('#overlay').hidden = false;
 }
-function addIntoWatched (e) {
+function addIntoWatched(e) {
   let getWatchedMovie = putWatched();
   const btn = e.target;
   if (languageData.language === 'EN') {
@@ -99,7 +101,7 @@ function addIntoWatched (e) {
     localStorage.setItem('WatchedId', JSON.stringify(getWatchedMovie.movie));
   }
 }
-function addIntoQueue (e) {
+function addIntoQueue(e) {
   let getQueueMovie = putQueue();
   const btn = e.target;
   if (languageData.language === 'EN') {
@@ -123,14 +125,14 @@ function addIntoQueue (e) {
     localStorage.setItem('QueueId', JSON.stringify(getQueueMovie.movie));
   }
 }
-function getQueue () {
+function getQueue() {
   const movieStorage = localStorage.getItem('QueueId');
   if (movieStorage !== null) {
     return JSON.parse(movieStorage);
   }
   return [];
 }
-function getWatched () {
+function getWatched() {
   const movieStorage = localStorage.getItem('WatchedId');
   if (movieStorage !== null) {
     return JSON.parse(movieStorage);
