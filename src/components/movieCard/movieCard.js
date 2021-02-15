@@ -1,4 +1,7 @@
+import { languageData } from '../language-set/language-set.js';
 import movieCard from '../../templates/movieCard.hbs';
+import movieCardRu from '../../templates/movieCardRu.hbs';
+
 
 const mainRef = document.querySelector('main');
 let id = [];
@@ -6,7 +9,7 @@ export function apiMovieCard(movieId) {
   id = movieId;
   console.log(id);
   const keyApi = '65999cd4dc4e9b42ad69f2cfa64d7f94';
-  const baseUrl = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${keyApi}&language=en-US`;
+  const baseUrl = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${keyApi}&language=${languageData.fetchLanguage}`;
   return fetch(baseUrl)
     .then(res => res.json())
     .then(movieCardMurkup)
@@ -14,7 +17,9 @@ export function apiMovieCard(movieId) {
 }
 
 function movieCardMurkup(data) {
-  mainRef.innerHTML = movieCard(data);
+  languageData.language === 'RU'
+    ? (mainRef.innerHTML = movieCardRu(data))
+    : (mainRef.innerHTML = movieCard(data));
   const watched = document.querySelector('.js-watched');
   const queue = document.querySelector('.js-queue');
   watched.addEventListener('click', addIntoWatched);
@@ -102,3 +107,4 @@ function putQueue() {
 }
 
 export { getWatched, getQueue };
+
