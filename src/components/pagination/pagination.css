@@ -61,13 +61,17 @@
 #first {
   margin-left: 16px;
 }
-.btnRight { 
+.btnRight {
   width: 40px;
   height: 40px;
   background-image: url(../../images/icons/arrow-left.svg);
   background-repeat: no-repeat;
-  background-position: center; 
+  background-position: center;
   border-radius: 5px;
   border: none;
   margin-right: 16px;
+}
+
+.is-hidden {
+  display: none;
 }
