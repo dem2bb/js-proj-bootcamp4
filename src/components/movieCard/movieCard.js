@@ -19,7 +19,7 @@ export function apiMovieCard (movieId) {
     .catch(err => console.log(err));
 }
 function movieCardMurkup(data) {
-  const youTubekeyApi = 'AIzaSyAau9jxJFcGbuSBlcpbQ6-jWd2i7BoZjec';
+  const youTubekeyApi = 'AIzaSyA7NhUZ2il-pyy6Dq9iaIB9Ozz41656aQ4';
   const youTubebaseUrl = `https://www.googleapis.com/youtube/v3/search?q=${data.original_title}&key=${youTubekeyApi}&part=snippet,id&order=date&maxResults=1`;
   languageData.language === 'RU'
     ? (mainRef.innerHTML = movieCardRu(data))
@@ -84,6 +84,16 @@ function movieCardMurkup(data) {
         document.querySelector(
           '#openTrailer',
         ).dataset.videosrc = `https://www.youtube.com/embed/${data}?enablejsapi=1`;
+        
+        //============================================
+        const youtubeUrl = document.querySelector(
+          '#openTrailer',
+        ).dataset.videosrc;
+
+        document.querySelector('.facebook').setAttribute('onClick', `window.open('https://www.facebook.com/sharer.php?u=${youtubeUrl}','sharer','status=0,toolbar=0,width=650,height=500');`)
+        document.querySelector('.twitter').setAttribute('onClick', `window.open('https://twitter.com/intent/tweet?text=${youtubeUrl}','sharer','status=0,toolbar=0,width=650,height=500');`)
+        document.querySelector('.telegram').setAttribute('onClick', `window.open('https://telegram.me/share/url?url=${youtubeUrl}','sharer','status=0,toolbar=0,width=650,height=500');`)
+
       });
   }
   youtube();
