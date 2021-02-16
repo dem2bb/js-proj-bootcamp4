@@ -6,6 +6,8 @@
 @import './components/loader/loader.css';
 @import './components/movieCard/movieCard.css';
 @import './components/pagination/pagination.css';
+@import './components/movieCard/socials.css';
+@import './components/main/youtube/youtube.css';
 
 *,
 *::before,
@@ -31,4 +33,8 @@ body {
 
 a {
   text-decoration: none;
+}
+
+.is-hidden {
+  display: none;
 }

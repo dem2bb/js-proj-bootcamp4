@@ -1,31 +1,50 @@
+import '@pnotify/core/dist/PNotify.css';
+import '@pnotify/core/dist/BrightTheme.css';
+import { error } from '@pnotify/core';
 import filmTpl from '../../templates/movies.hbs';
 import removeLoader from '../loader/remove-loader.js';
 import { genres } from '../../index.js';
-import one from '../../templates/firstPage.hbs';
 import multi from '../../templates/mulltipage.hbs';
-
-const refs = {
-  key: 'c1bc6964ae67d43eb6945614299c385c',
-  galleryCont: document.querySelector('.film-list'),
-};
-let page = 1;
+import after4 from '../../templates/after4page.hbs';
+import { refs } from '../main/searchPrint';
+import search from '../main/searchByName';
+import { languageData } from '../language-set/language-set.js';
+export let page = 1;
 let pageNext;
 let pageNext2;
 let pagePrev;
 let pagePrev2;
+let pageNext20;
 
-let basePagUrl = `https://api.themoviedb.org/3/trending/movie/day?api_key=${refs.key}&page=`;
-export function fetchMovies() {
-  fetch(basePagUrl + page)
-    .then(res => res.json())
-    .then(data => {
-      setTimeout(() => {
-        console.log(data);
-        insertItems(data);
-      }, 1000);
+export function fetchMovies () {
+  if (refs.input.value) {
+    search.searchFilms(refs.input.value, page).then(data => {
+      insertItems(data);
+      toggleChosen();
     });
+  } else {
+    fetch(
+      `https://api.themoviedb.org/3/trending/movie/day?api_key=${refs.key}&page=` +
+        page +
+        `&language=${languageData.fetchLanguage}`,
+    )
+      .then(res => res.json())
+      .then(data => {
+        insertItems(data);
+        toggleChosen();
+      });
+  }
 }
-export function insertItems(film) {
+
+export function insertItems (film) {
+  if (film.results.length === 0) {
+    error({
+      title: 'Film not found.',
+      text: 'Check film name and try again.',
+      delay: 3000,
+      closerHover: true,
+    });
+  }
   const markup = film.results
     .map(item => {
       let movieGenres = [];
@@ -34,74 +53,83 @@ export function insertItems(film) {
         movieGenres.push(genreName.name);
       });
       item.genre_ids = movieGenres;
-      item.vote_average = item.vote_average.toFixed(1)
-      item.release_date=parseInt(item.release_date)
+      item.vote_average = item.vote_average.toFixed(1);
+      item.release_date = parseInt(item.release_date);
       return filmTpl(item);
     })
     .join('');
   refs.galleryCont.innerHTML = markup;
   removeLoader();
 }
-export function fetchGenres() {
-  const genreListUrl = `https://api.themoviedb.org/3/genre/movie/list?api_key=${refs.key}&language=en-US`;
+
+export function fetchGenres () {
+  const genreListUrl = `https://api.themoviedb.org/3/genre/movie/list?api_key=${refs.key}&language=${languageData.fetchLanguage}`;
   return fetch(genreListUrl)
     .then(res => res.json())
     .then(data => data.genres)
     .catch(err => console.log(err));
 }
-let pageDiv = document.querySelector('#pagDiv');
-let url = '../../images/icons/arrow-left.svg';
-function pagMarkup() {
-  if (page === 1) {
-    pageDiv.innerHTML = one({ page, url });
 
-    // document.querySelector("#inc").insertAdjacentHTML('afterbegin', `<svg src="../../images/icons/arrow-left.svg"></svg>`);
+let pageDiv = document.querySelector('#pagDiv');
+
+function pagMarkup () {
+  pageNext20 = page + 19;
+
+  if (page <= 4) {
+    pageDiv.innerHTML = multi({ pageNext20 });
   }
-  if (page > 1) {
+  if (page > 4) {
     pageNext = page + 1;
     pageNext2 = page + 2;
-    pageDiv.innerHTML = multi({
+    pagePrev = page - 1;
+    pagePrev2 = page - 2;
+    pageDiv.innerHTML = after4({
       page,
-      url,
       pageNext,
       pageNext2,
       pagePrev,
       pagePrev2,
+      pageNext20,
     });
-    pagePrev = '';
-    pagePrev2 = '';
-
-    // pageNext.innerHTML = page+1;
-    // pageNext2.innerHTML = page+2;
-    // pagePrev.innerHTML = page-1;
-    // pagePrev2.innerHTML = page-2;
-    let decPage = document.querySelector('#dec');
-    decPage.addEventListener('click', decrement);
   }
-  if (page > 2) {
-    pagePrev = page - 1;
-    pagePrev2 = page - 2;
-  }
+  let incPage = document.querySelector('#inc');
+  incPage.addEventListener('click', increment);
+  let decPage = document.querySelector('#dec');
+  decPage.addEventListener('click', decrement);
 }
-pagMarkup();
 
-let incPage = document.querySelector('#inc');
-incPage.addEventListener('click', increment);
-
-function increment() {
+function increment () {
   page += 1;
   fetchMovies();
   pagMarkup();
-  let incPage = document.querySelector('#inc');
-  incPage.addEventListener('click', increment);
 }
 
-function decrement() {
+function decrement () {
   if (page > 1) {
     page -= 1;
     fetchMovies();
     pagMarkup();
   }
-  let incPage = document.querySelector('#inc');
-  incPage.addEventListener('click', increment);
 }
+
+function toggleChosen () {
+  let allPagLinks = document.querySelector('#pagDiv').getElementsByTagName('*');
+
+  allPagLinks.forEach(item => {
+    if (parseInt(item.innerHTML) === page) {
+      item.classList.add('active-page');
+    }
+  });
+}
+
+function choosePage (event) {
+  if (event.target.nodeName === 'A') {
+    page = parseInt(event.target.innerHTML);
+    fetchMovies();
+    pagMarkup();
+  }
+}
+
+pagMarkup();
+
+document.querySelector('#pagDiv').addEventListener('click', choosePage);

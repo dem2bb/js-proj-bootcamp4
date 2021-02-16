@@ -1,6 +1,6 @@
-function removeLoader() {
+function removeLoader () {
   const mainRef = document.querySelector('.loader');
-  mainRef.classList.add('is-hiden');
+  mainRef ? mainRef.classList.add('is-hiden') : '';
 }
 
 export default removeLoader;

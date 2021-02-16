@@ -94,7 +94,7 @@
 }
 
 @media screen and (min-width: 768px) {
-  .container {
+  .cont-film {
     display: flex;
   }
   .img-movie-card {
@@ -118,12 +118,8 @@
 }
 
 @media screen and (min-width: 1024px) {
-  .img-movie-card {
-    width: 426px;
-    height: 514px;
-  }
   .js-clicked {
-    background-color: green;
+    background-color: rgb(97, 34, 44);
     color: white;
     outline: none;
   }
