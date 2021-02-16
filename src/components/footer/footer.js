@@ -116,7 +116,3 @@ function openModal(event) {
     }
   }
 }
-
-// function closeModal(event) {
-
-// }
