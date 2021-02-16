@@ -37,13 +37,22 @@ export function fetchMovies () {
 }
 
 export function insertItems (film) {
-  if (film.results.length === 0) {
+  if (film.results.length === 0&&languageData.language === 'EN') {
     error({
       title: 'Film not found.',
       text: 'Check film name and try again.',
       delay: 3000,
       closerHover: true,
     });
+    return
+  } else if(film.results.length === 0&&languageData.language === 'RU'){
+  error({
+      title: 'Фильм не найден.',
+      text: 'Проверьте правильность ввода и повторите поиск',
+      delay: 3000,
+      closerHover: true,
+    });
+    return
   }
   const markup = film.results
     .map(item => {
