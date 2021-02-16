@@ -94,7 +94,7 @@ function addIntoWatched(e) {
     btn.classList.contains('js-clicked')
       ? btn.classList.remove('js-clicked')
       : btn.classList.add('js-clicked');
-    localStorage.setItem('WatchedId', JSON.stringify(getWatchedMovie.movie));
+    localStorage.setItem('WatchedId', JSON.stringify(getWatchedMovie.id));
   }
   if (languageData.language === 'RU') {
     btn.innerHTML =
@@ -104,8 +104,12 @@ function addIntoWatched(e) {
     btn.classList.contains('js-clicked')
       ? btn.classList.remove('js-clicked')
       : btn.classList.add('js-clicked');
-    localStorage.setItem('WatchedId', JSON.stringify(getWatchedMovie.movie));
+    localStorage.setItem('WatchedId', JSON.stringify(getWatchedMovie.id));
   }
+  btn.innerHTML = (btn.innerHTML === 'Added to Watched') ? btn.innerHTML = 'Add to Watched' : btn.innerHTML = 'Added to Watched';
+  (btn.classList.contains('js-clicked')) ? btn.classList.remove('js-clicked') : btn.classList.add('js-clicked');
+  localStorage.setItem('WatchedId', JSON.stringify(getWatchedMovie.id));
+  localStorage.setItem('WatchedObj', JSON.stringify(getWatchedMovie.obj));
 }
 function addIntoQueue(e) {
   let getQueueMovie = putQueue();
@@ -134,6 +138,10 @@ function addIntoQueue(e) {
       : btn.classList.add('js-clicked');
     localStorage.setItem('QueueId', JSON.stringify(getQueueMovie.movie));
   }
+  btn.innerHTML = (btn.innerHTML === 'Added to Queue') ? btn.innerHTML = 'Add to Queue' : btn.innerHTML = 'Added to Queue';
+  (btn.classList.contains('js-clicked')) ? btn.classList.remove('js-clicked') : btn.classList.add('js-clicked');
+  localStorage.setItem('QueueId', JSON.stringify(getQueueMovie.id));
+  localStorage.setItem('QueueObj', JSON.stringify(getQueueMovie.obj));
 }
 function getQueue() {
   const movieStorageID = localStorage.getItem('QueueId');
@@ -168,6 +176,7 @@ function putWatched() {
   }
   return { id: movie.id, obj: movie.obj }
 }
+export { getWatched, getQueue };
 function putQueue() {
   let movie = getQueue();
   const index = movie.id.indexOf(id);
@@ -180,4 +189,5 @@ function putQueue() {
   }
   return { id: movie.id, obj: movie.obj }
 }
+
 
