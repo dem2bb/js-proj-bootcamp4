@@ -82,6 +82,10 @@ function openVideo() {
 function addIntoWatched(e) {
   let getWatchedMovie = putWatched();
   const btn = e.target;
+  btn.innerHTML = (btn.innerHTML === 'Added to Watched') ? btn.innerHTML = 'Add to Watched' : btn.innerHTML = 'Added to Watched';
+  (btn.classList.contains('js-clicked')) ? btn.classList.remove('js-clicked') : btn.classList.add('js-clicked');
+  localStorage.setItem('WatchedId', JSON.stringify(getWatchedMovie.id));
+  localStorage.setItem('WatchedObj', JSON.stringify(getWatchedMovie.obj));
   if (languageData.language === 'EN') {
     btn.innerHTML =
       btn.innerHTML === 'Added to Watched'
@@ -110,6 +114,10 @@ function addIntoWatched(e) {
 function addIntoQueue(e) {
   let getQueueMovie = putQueue();
   const btn = e.target;
+  btn.innerHTML = (btn.innerHTML === 'Added to Queue') ? btn.innerHTML = 'Add to Queue' : btn.innerHTML = 'Added to Queue';
+  (btn.classList.contains('js-clicked')) ? btn.classList.remove('js-clicked') : btn.classList.add('js-clicked');
+  localStorage.setItem('QueueId', JSON.stringify(getQueueMovie.id));
+  localStorage.setItem('QueueObj', JSON.stringify(getQueueMovie.obj));
   if (languageData.language === 'EN') {
     btn.innerHTML =
       btn.innerHTML === 'Added to Queue'
@@ -181,3 +189,5 @@ function putQueue() {
   }
   return { id: movie.id, obj: movie.obj }
 }
+
+
