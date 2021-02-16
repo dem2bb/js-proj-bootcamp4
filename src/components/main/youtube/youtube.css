@@ -35,7 +35,7 @@
 .modal_close {
   width: 22px;
   height: 22px;
-  margin-left: 640px;
+  margin-left: 50%;
   cursor: pointer;
   background-image: url(../../../images/icons/close-modal-video.png);
   background-repeat: no-repeat;
@@ -62,12 +62,12 @@
   background: none;
 }
 #player {
-  width: 60%;
-  height: 50%;
+  width: 50%;
+  height: 70%;
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 768px) {
   #modal_form {
-    left: 33%;
+    left: 25%;
   }
 }
