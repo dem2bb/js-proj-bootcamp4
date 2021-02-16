@@ -1,6 +1,6 @@
 import movieCard from '../../templates/movieCard.hbs';
 const mainRef = document.querySelector('main');
-let id = [];
+let id;
 let obj;
 export function apiMovieCard(movieId) {
   id = movieId;
@@ -14,7 +14,6 @@ export function apiMovieCard(movieId) {
   })
   .catch(err => console.log(err));
 }
-
 function movieCardMurkup(data) {
   mainRef.innerHTML = movieCard(data);
   const watched = document.querySelector('.js-watched');
@@ -37,61 +36,63 @@ function movieCardMurkup(data) {
     }
   }
 }
-
 function addIntoWatched(e) {
   let getWatchedMovie = putWatched();
   const btn = e.target;
   btn.innerHTML = (btn.innerHTML === 'Added to Watched') ? btn.innerHTML = 'Add to Watched' : btn.innerHTML = 'Added to Watched';
   (btn.classList.contains('js-clicked')) ? btn.classList.remove('js-clicked') : btn.classList.add('js-clicked');
-  localStorage.setItem('WatchedId', JSON.stringify(getWatchedMovie.movie));
-  localStorage.setItem('WatchedObj', JSON.stringify(getWatchedMovie.movie));
+  localStorage.setItem('WatchedId', JSON.stringify(getWatchedMovie.id));
+  localStorage.setItem('WatchedObj', JSON.stringify(getWatchedMovie.obj));
 }
 function addIntoQueue(e) {
   let getQueueMovie = putQueue();
   const btn = e.target;
   btn.innerHTML = (btn.innerHTML === 'Added to Queue') ? btn.innerHTML = 'Add to Queue' : btn.innerHTML = 'Added to Queue';
   (btn.classList.contains('js-clicked')) ? btn.classList.remove('js-clicked') : btn.classList.add('js-clicked');
-  localStorage.setItem('QueueId', JSON.stringify(getQueueMovie.movie));
+  localStorage.setItem('QueueId', JSON.stringify(getQueueMovie.id));
+  localStorage.setItem('QueueObj', JSON.stringify(getQueueMovie.obj));
 }
 function getQueue() {
-  const movieStorage = localStorage.getItem('QueueId');
-  if (movieStorage !== null) {
-    return JSON.parse(movieStorage);
+  const movieStorageID = localStorage.getItem('QueueId');
+  const movieStorageObj = localStorage.getItem('QueueObj'); 
+  if (movieStorageID !== null && movieStorageObj !== null) {
+    const id = JSON.parse(movieStorageID);
+    const obj = JSON.parse(movieStorageObj);
+    return {id, obj}
   }
-  return [];
+  return {id: [], obj: []};
 }
 function getWatched() {
   const movieStorageID = localStorage.getItem('WatchedId');
   const movieStorageObj = localStorage.getItem('WatchedObj');
   if (movieStorageID !== null && movieStorageObj !== null) {
-    return JSON.parse(movieStorageID, movieStorageObj);
+    const id = JSON.parse(movieStorageID);
+    const obj = JSON.parse(movieStorageObj);
+    return {id, obj}
   }
-  return [];
+  return {id: [], obj: []};
 }
 function putWatched() {
   let movie = getWatched();
-  let movieObj = getWatched();
-  console.log(movie);
-  let pushMovie = false;
-  const index = movie.indexOf(id);
+  const index = movie.id.indexOf(id);
   if(index === -1) {
-    movie.push(id);
-    movieObj.push(obj);
-    pushMovie = true;
+    movie.id.push(id);
+    movie.obj.push(obj);
   }else{
-    movie.splice(index, 1);
+    movie.id.splice(index, 1);
+    movie.obj.splice(index, 1);
   }
-  return {movie, pushMovie, movieObj }
+  return { id: movie.id, obj: movie.obj }
 }
 function putQueue() {
   let movie = getQueue();
-  let pushMovie = false;
-  const index = movie.indexOf(id);
+  const index = movie.id.indexOf(id);
   if(index === -1) {
-    movie.push(id);
-    pushMovie = true;
+    movie.id.push(id);
+    movie.obj.push(obj);
   }else{
-    movie.splice(index, 1);
+    movie.id.splice(index, 1);
+    movie.obj.splice(index, 1);
   }
-  return {movie, pushMovie }
+  return { id: movie.id, obj: movie.obj }
 }
