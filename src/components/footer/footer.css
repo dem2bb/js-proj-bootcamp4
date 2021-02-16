@@ -23,23 +23,6 @@
   margin-right: 3px;
 }
 
-@media (max-width: 767px) {
-  .modalWindow-item {
-    width: 48%;
-  }
-}
-
-@media (min-width: 768px) {
-  .footer {
-    height: 77px;
-    padding: 31px 0 34px 0;
-  }
-
-  .modalWindow-item {
-    width: 25%;
-  }
-}
-
 .main-cont {
   position: relative;
 }
@@ -49,9 +32,9 @@
   display: none;
   left: 0;
   top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(182, 160, 160, 0.562);
+  right: 0;
+  bottom: 0;
+  background-color: rgb(15, 15, 15);
   z-index: 2;
 }
 
@@ -64,7 +47,18 @@
   transform: translate(-50%, 50%);
   width: 80%;
   height: 90%;
-  background-color: #fff;
+  color: #ffffff;
+  /* background-color: #252626; */
+  background-image: url(https://exoft.net/wp-content/uploads/2020/11/hero-image.jpg);
+  background: linear-gradient(
+    to top rgb(209, 207, 207),
+    rgb(155, 153, 153) 25%,
+    #606161 50%,
+    #484949 75%,
+    #252626 100%
+  );
+  background-repeat: no-repeat;
+  background-size: cover;
   z-index: 1;
   overflow-y: scroll;
   padding-bottom: 30px;
@@ -79,28 +73,35 @@
     opacity: 1;
   }
 }
+.modalWindow-item {
+  width: 25%;
+  text-align: center;
+  height: 300px;
+}
 
 .modalWindow-list {
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   list-style: none;
 }
 
-.modalWindow-item {
-  text-align: center;
-  height: 300px;
-}
-
 .our-team__name {
-  font-size: 32px;
+  font-size: 42px;
   padding: 30px 0;
   text-align: center;
-  color: #12a837;
+  color: #31c923;
 }
 
 .our-team__picture {
+  object-fit: cover;
   margin-bottom: 30px;
   border-radius: 50%;
+  transition: 0.7s;
+}
+
+.our-team__picture:hover {
+  transform: scale(1.4);
 }
 
 .teammates-name {
@@ -115,4 +116,21 @@
 .button-footer {
   display: block;
   margin: 0 auto;
+  transition: 0.7s;
+}
+
+.button-footer:hover {
+  transform: scale(1.4);
+}
+
+@media screen and (max-width: 767px) {
+  .modalWindow-item {
+    width: 48%;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  .modalWindow-item {
+    width: 32%;
+  }
 }
