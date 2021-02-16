@@ -1,7 +1,7 @@
-import "@pnotify/core/dist/PNotify.css";
-import "@pnotify/core/dist/BrightTheme.css";
-import { error} from "@pnotify/core";
-import debounce from "lodash/debounce";
+import '@pnotify/core/dist/PNotify.css';
+import '@pnotify/core/dist/BrightTheme.css';
+import { error } from '@pnotify/core';
+import debounce from 'lodash/debounce';
 import search from './searchByName.js';
 import { insertItems, page } from '../popularMovies/fetch.js';
 import { languageData } from '../language-set/language-set.js';
@@ -20,25 +20,26 @@ function searchPrint(event) {
   if (!refs.input.value.match(letterNumber) && languageData.language === 'EN') {
     error({
       title: 'Wrong input.',
-    text: 'The field may contain letters and numbers only.',
-    delay: 3000,
-    closerHover: true,
-    })
-    return 
-  }
-  else if (!refs.input.value.match(letterNumber) && languageData.language === 'RU') {
+      text: 'The field may contain letters and numbers only.',
+      delay: 3000,
+      closerHover: true,
+    });
+    return;
+  } else if (
+    !refs.input.value.match(letterNumber) &&
+    languageData.language === 'RU'
+  ) {
     error({
       title: 'Неверный ввод.',
-    text: 'Поле может содержать только буквы и цифры.',
-    delay: 3000,
-    closerHover: true,
-    })
-    return 
-   }
+      text: 'Поле может содержать только буквы и цифры.',
+      delay: 3000,
+      closerHover: true,
+    });
+    return;
+  }
 
-  
   search.searchFilms(refs.input.value, page).then(data => insertItems(data));
 }
 
-// refs.searchForm.addEventListener('submit', searchPrint);
+refs.searchForm.addEventListener('submit', searchPrint);
 refs.input.addEventListener('input', debounce(searchPrint, 500));
