@@ -6,7 +6,7 @@ import movieCardRu from '../../templates/movieCardRu.hbs';
 const mainRef = document.querySelector('main');
 let id;
 let obj;
-export function apiMovieCard(movieId) {
+export function apiMovieCard (movieId) {
   id = movieId;
   const keyApi = '65999cd4dc4e9b42ad69f2cfa64d7f94';
   const baseUrl = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${keyApi}&language=${languageData.fetchLanguage}`;
@@ -18,7 +18,7 @@ export function apiMovieCard(movieId) {
     })
     .catch(err => console.log(err));
 }
-function movieCardMurkup(data) {
+function movieCardMurkup (data) {
   const youTubekeyApi = 'AIzaSyDPdvd-Z0DaVIKxxUn0UYRXPrEmYEJbmkY';
   const youTubebaseUrl = `https://www.googleapis.com/youtube/v3/search?q=${data.original_title}&key=${youTubekeyApi}&part=snippet,id&order=date&maxResults=1`;
   languageData.language === 'RU'
@@ -36,8 +36,14 @@ function movieCardMurkup(data) {
   const foundId = movieWatched.id.find(item => item === index);
 
   if (foundId) {
-    watched.innerHTML = 'Added to Watched';
-    watched.classList.add('js-clicked');
+    if (languageData.language === 'EN') {
+      watched.innerHTML = 'Added to Watched';
+      watched.classList.add('js-clicked');
+    }
+    if (languageData.language === 'RU') {
+      watched.innerHTML = 'Добавлено в просмотренные';
+      watched.classList.add('js-clicked');
+    }
   }
 
   // for (let item in movieWatched) {
@@ -64,7 +70,7 @@ function movieCardMurkup(data) {
   //     }
   //   }
   // }
-  function youtube() {
+  function youtube () {
     fetch(youTubebaseUrl)
       .then(res => res.json())
       .then(data => {
@@ -81,7 +87,7 @@ function movieCardMurkup(data) {
   }
   youtube();
 }
-function openVideo() {
+function openVideo () {
   document.querySelector('.playerDiv').hidden = false;
   document.querySelector('#overlay').hidden = false;
   document.querySelector('.modal_close').addEventListener('click', () => {
@@ -90,18 +96,29 @@ function openVideo() {
     // document.querySelector('#aa').addEventListener('click', openVideo);
   });
 }
-function addIntoWatched(e) {
+function addIntoWatched (e) {
   let getWatchedMovie = putWatched();
   const btn = e.target;
-  btn.innerHTML =
-    btn.innerHTML === 'Added to Watched'
-      ? (btn.innerHTML = 'Add to Watched')
-      : (btn.innerHTML = 'Added to Watched');
+  if (languageData.language === 'EN') {
+    btn.innerHTML =
+      btn.innerHTML === 'Added to Watched'
+        ? (btn.innerHTML = 'Add to Watched')
+        : (btn.innerHTML = 'Added to Watched');
+  }
+
+  if (languageData.language === 'RU') {
+    btn.innerHTML =
+      btn.innerHTML === 'Добавлено к просмотренным'
+        ? (btn.innerHTML = 'Добавить к просмотренным')
+        : (btn.innerHTML = 'Добавлено к просмотренным');
+  }
+
   btn.classList.contains('js-clicked')
     ? btn.classList.remove('js-clicked')
     : btn.classList.add('js-clicked');
   localStorage.setItem('WatchedId', JSON.stringify(getWatchedMovie.id));
   localStorage.setItem('WatchedObj', JSON.stringify(getWatchedMovie.obj));
+
   if (languageData.language === 'EN') {
     btn.innerHTML =
       btn.innerHTML === 'Added to Watched'
@@ -122,23 +139,41 @@ function addIntoWatched(e) {
       : btn.classList.add('js-clicked');
     localStorage.setItem('WatchedId', JSON.stringify(getWatchedMovie.id));
   }
-  btn.innerHTML =
-    btn.innerHTML === 'Added to Watched'
-      ? (btn.innerHTML = 'Add to Watched')
-      : (btn.innerHTML = 'Added to Watched');
+  if (languageData.language === 'EN') {
+    btn.innerHTML =
+      btn.innerHTML === 'Added to Watched'
+        ? (btn.innerHTML = 'Add to Watched')
+        : (btn.innerHTML = 'Added to Watched');
+  }
+  if (languageData.language === 'RU') {
+    btn.innerHTML =
+      btn.innerHTML === 'Добавлено к просмотру'
+        ? (btn.innerHTML = 'Добавить к просмотру')
+        : (btn.innerHTML = 'Добавлено к просмотру');
+  }
+
   btn.classList.contains('js-clicked')
     ? btn.classList.remove('js-clicked')
     : btn.classList.add('js-clicked');
   localStorage.setItem('WatchedId', JSON.stringify(getWatchedMovie.id));
   localStorage.setItem('WatchedObj', JSON.stringify(getWatchedMovie.obj));
 }
-function addIntoQueue(e) {
+function addIntoQueue (e) {
   let getQueueMovie = putQueue();
   const btn = e.target;
-  btn.innerHTML =
-    btn.innerHTML === 'Added to Queue'
-      ? (btn.innerHTML = 'Add to Queue')
-      : (btn.innerHTML = 'Added to Queue');
+  if (languageData.language === 'EN') {
+    btn.innerHTML =
+      btn.innerHTML === 'Added1 to Queue'
+        ? (btn.innerHTML = 'Add1 to Queue')
+        : (btn.innerHTML = 'Added1 to Queue');
+  }
+  if (languageData.language === 'RU') {
+    btn.innerHTML =
+      btn.innerHTML === 'Добавлено к просмотру'
+        ? (btn.innerHTML = 'Добавить к просмотру')
+        : (btn.innerHTML = 'Добавлено к просмотру');
+  }
+
   btn.classList.contains('js-clicked')
     ? btn.classList.remove('js-clicked')
     : btn.classList.add('js-clicked');
@@ -164,17 +199,26 @@ function addIntoQueue(e) {
       : btn.classList.add('js-clicked');
     localStorage.setItem('QueueId', JSON.stringify(getQueueMovie.movie));
   }
-  btn.innerHTML =
-    btn.innerHTML === 'Added to Queue'
-      ? (btn.innerHTML = 'Add to Queue')
-      : (btn.innerHTML = 'Added to Queue');
+  if (languageData.language === 'EN') {
+    btn.innerHTML =
+      btn.innerHTML === 'Added to Queue'
+        ? (btn.innerHTML = 'Add to Queue')
+        : (btn.innerHTML = 'Added to Queue');
+  }
+  if (languageData.language === 'RU') {
+    btn.innerHTML =
+      btn.innerHTML === 'Добавлено к просмотру'
+        ? (btn.innerHTML = 'Добавить к просмотру')
+        : (btn.innerHTML = 'Добавлено к просмотру');
+  }
+
   btn.classList.contains('js-clicked')
     ? btn.classList.remove('js-clicked')
     : btn.classList.add('js-clicked');
   localStorage.setItem('QueueId', JSON.stringify(getQueueMovie.id));
   localStorage.setItem('QueueObj', JSON.stringify(getQueueMovie.obj));
 }
-function getQueue() {
+function getQueue () {
   const movieStorageID = localStorage.getItem('QueueId');
   const movieStorageObj = localStorage.getItem('QueueObj');
   if (movieStorageID !== null && movieStorageObj !== null) {
@@ -184,7 +228,7 @@ function getQueue() {
   }
   return { id: [], obj: [] };
 }
-function getWatched() {
+function getWatched () {
   const movieStorageID = localStorage.getItem('WatchedId');
   const movieStorageObj = localStorage.getItem('WatchedObj');
   if (movieStorageID !== null && movieStorageObj !== null) {
@@ -195,7 +239,7 @@ function getWatched() {
   return { id: [], obj: [] };
 }
 
-function putWatched() {
+function putWatched () {
   let movie = getWatched();
   const index = movie.id.indexOf(id);
   if (index === -1) {
@@ -208,7 +252,7 @@ function putWatched() {
   return { id: movie.id, obj: movie.obj };
 }
 export { getWatched, getQueue };
-function putQueue() {
+function putQueue () {
   let movie = getQueue();
   const index = movie.id.indexOf(id);
   if (index === -1) {

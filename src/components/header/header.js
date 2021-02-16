@@ -5,21 +5,29 @@ refs = {
   buttonWatch: document.querySelector('.button.watch'),
   buttonQueue: document.querySelector('.button.queue'),
   headerBcg: document.querySelector('.page-header'),
+  languageSet: document.querySelector('.theme-switch__control'),
 };
 
-refs.linkHome.addEventListener('click', headerToggler);
+refs.linkHome.addEventListener('click', homeRender);
 
-refs.linkLibrary.addEventListener('click', headerToggler);
+refs.linkLibrary.addEventListener('click', libRender);
 
-function headerToggler (event) {
-  if (event.currentTarget.classList.contains('current')) {
-    return;
-  } else {
-  refs.linkHome.classList.toggle('current');
-  refs.linkLibrary.classList.toggle('current');
-  refs.inputForm.classList.toggle('is-hidden');
-  refs.buttonQueue.classList.toggle('is-hidden');
-  refs.buttonWatch.classList.toggle('is-hidden');
-  refs.headerBcg.classList.toggle('lib-bcg');
+function homeRender (event) {
+  refs.linkHome.classList.add('current');
+  refs.linkLibrary.classList.remove('current');
+  refs.inputForm.classList.remove('is-hidden');
+  refs.buttonQueue.classList.add('is-hidden');
+  refs.buttonWatch.classList.add('is-hidden');
+  refs.headerBcg.classList.remove('lib-bcg');
+  refs.headerBcg.classList.remove('modal-bcg');
 }
+function libRender (event) {
+  refs.linkHome.classList.remove('current');
+  refs.linkLibrary.classList.add('current');
+  refs.inputForm.classList.add('is-hidden');
+  refs.buttonQueue.classList.remove('is-hidden');
+  refs.buttonWatch.classList.remove('is-hidden');
+  refs.headerBcg.classList.add('lib-bcg');
+  refs.headerBcg.classList.remove('modal-bcg');
+  refs.languageSet.classList.remove('is-hidden');
 }

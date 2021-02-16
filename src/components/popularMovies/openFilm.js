@@ -2,6 +2,8 @@ import { apiMovieCard } from '../movieCard/movieCard.js';
 const inputFormRef = document.querySelector('.search-form');
 const buttonWatchRef = document.querySelector('.button.watch');
 const buttonQueueRef = document.querySelector('.button.queue');
+const headerBcgRef = document.querySelector('.page-header');
+const refLanguageSet = document.querySelector('.theme-switch__control');
 
 const refs = {
   ul: document.querySelector('.film-list'),
@@ -16,17 +18,19 @@ function imgOpen (event) {
   inputFormRef.classList.add('is-hidden');
   buttonWatchRef.classList.add('is-hidden');
   buttonQueueRef.classList.add('is-hidden');
+  headerBcgRef.classList.add('modal-bcg');
+  refLanguageSet.classList.add('is-hidden');
 }
 
 refs.ul.addEventListener('click', imgOpen);
 
-function addBoxShadow(event) {
+function addBoxShadow (event) {
   if (event.target.parentNode.nodeName !== 'LI') {
     return;
   }
   event.target.parentNode.classList.add('box-shadow');
 }
-function removeBoxShadow(event) {
+function removeBoxShadow (event) {
   event.target.parentNode.classList.remove('box-shadow');
 }
 refs.ul.addEventListener('mouseover', addBoxShadow);
