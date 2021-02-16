@@ -14,6 +14,11 @@
     url('../../images/lib-bcg-mobile.jpg');
 }
 
+.page-header.modal-bcg {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+    url('../../images/modal-mobile.jpg');
+}
+
 .logo-text {
   display: none;
   opacity: 0;
@@ -159,6 +164,12 @@
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url('../../images/lib-bcg-tablet.jpg');
   }
+
+  .page-header.modal-bcg {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url('../../images/modal-tablet.jpg');
+  }
+
   .site-nav-link {
     gap: 39px;
   }
@@ -172,5 +183,9 @@
   .page-header.lib-bcg {
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url('../../images/lib-bcg-pc.jpg');
+  }
+  .page-header.modal-bcg {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url('../../images/modal-pc.jpg');
   }
 }
