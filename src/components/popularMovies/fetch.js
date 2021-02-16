@@ -1,6 +1,6 @@
-import "@pnotify/core/dist/PNotify.css";
-import "@pnotify/core/dist/BrightTheme.css";
-import { error} from "@pnotify/core";
+import '@pnotify/core/dist/PNotify.css';
+import '@pnotify/core/dist/BrightTheme.css';
+import { error } from '@pnotify/core';
 import filmTpl from '../../templates/movies.hbs';
 import removeLoader from '../loader/remove-loader.js';
 import { genres } from '../../index.js';
@@ -8,7 +8,7 @@ import multi from '../../templates/mulltipage.hbs';
 import after4 from '../../templates/after4page.hbs';
 import { refs } from '../main/searchPrint';
 import search from '../main/searchByName';
-
+import { languageData } from '../language-set/language-set.js';
 export let page = 1;
 let pageNext;
 let pageNext2;
@@ -16,14 +16,18 @@ let pagePrev;
 let pagePrev2;
 let pageNext20;
 
-export function fetchMovies() {
+export function fetchMovies () {
   if (refs.input.value) {
     search.searchFilms(refs.input.value, page).then(data => {
       insertItems(data);
       toggleChosen();
     });
   } else {
-    fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=${refs.key}&page=` + page)
+    fetch(
+      `https://api.themoviedb.org/3/trending/movie/day?api_key=${refs.key}&page=` +
+        page +
+        `&language=${languageData.fetchLanguage}`,
+    )
       .then(res => res.json())
       .then(data => {
         insertItems(data);
@@ -32,14 +36,23 @@ export function fetchMovies() {
   }
 }
 
-export function insertItems(film) {
-  if (film.results.length === 0) {
+export function insertItems (film) {
+  if (film.results.length === 0&&languageData.language === 'EN') {
     error({
-      title:'Film not found.',
-    text: 'Check film name and try again.',
-    delay: 3000,
-    closerHover: true,
-  })
+      title: 'Film not found.',
+      text: 'Check film name and try again.',
+      delay: 3000,
+      closerHover: true,
+    });
+    return
+  } else if(film.results.length === 0&&languageData.language === 'RU'){
+  error({
+      title: 'Фильм не найден.',
+      text: 'Проверьте правильность ввода и повторите поиск',
+      delay: 3000,
+      closerHover: true,
+    });
+    return
   }
   const markup = film.results
     .map(item => {
@@ -58,8 +71,8 @@ export function insertItems(film) {
   removeLoader();
 }
 
-export function fetchGenres() {
-  const genreListUrl = `https://api.themoviedb.org/3/genre/movie/list?api_key=${refs.key}&language=en-US`;
+export function fetchGenres () {
+  const genreListUrl = `https://api.themoviedb.org/3/genre/movie/list?api_key=${refs.key}&language=${languageData.fetchLanguage}`;
   return fetch(genreListUrl)
     .then(res => res.json())
     .then(data => data.genres)
@@ -68,7 +81,7 @@ export function fetchGenres() {
 
 let pageDiv = document.querySelector('#pagDiv');
 
-function pagMarkup() {
+function pagMarkup () {
   pageNext20 = page + 19;
 
   if (page <= 4) {
@@ -94,13 +107,13 @@ function pagMarkup() {
   decPage.addEventListener('click', decrement);
 }
 
-function increment() {
+function increment () {
   page += 1;
   fetchMovies();
   pagMarkup();
 }
 
-function decrement() {
+function decrement () {
   if (page > 1) {
     page -= 1;
     fetchMovies();
@@ -108,7 +121,7 @@ function decrement() {
   }
 }
 
-function toggleChosen() {
+function toggleChosen () {
   let allPagLinks = document.querySelector('#pagDiv').getElementsByTagName('*');
 
   allPagLinks.forEach(item => {
@@ -118,7 +131,7 @@ function toggleChosen() {
   });
 }
 
-function choosePage(event) {
+function choosePage (event) {
   if (event.target.nodeName === 'A') {
     page = parseInt(event.target.innerHTML);
     fetchMovies();

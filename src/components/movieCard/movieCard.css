@@ -87,6 +87,11 @@
   color: black;
   outline: none;
 }
+.js-clicked {
+  background-color: green;
+  color: white;
+  outline: none;
+}
 
 @media screen and (min-width: 768px) {
   .cont-film {
@@ -104,6 +109,11 @@
   }
   .btn-to-queue {
     margin-left: 15px;
+  }
+  .js-clicked {
+    background-color: green;
+    color: white;
+    outline: none;
   }
 }
 
