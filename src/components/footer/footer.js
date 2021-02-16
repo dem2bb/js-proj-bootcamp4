@@ -1,4 +1,11 @@
-import poky from '../../images/poky.jpg';
+import makskazachuk from '../../images/team/makskazachuk.jpg';
+import paul from '../../images/team/paul.jpg';
+import dima_orgish from '../../images/team/dima_orgish.jpg';
+import dimaGrinchenko from '../../images/team/dimaGrinchenko.jpg';
+import maks from '../../images/team/maks.jpg';
+import zheka from '../../images/team/zheka.jpg';
+import vova from '../../images/team/vova.jpg';
+import stas from '../../images/team/stas.jpg';
 
 const students = document.querySelector('.footer-description__link');
 const main = document.querySelector('.main-cont');
@@ -13,7 +20,7 @@ const createDevelopers = () => {
             <ul class='modalWindow-list'>
             <li class='modalWindow-item'>
                 <img 
-                src=${poky} 
+                src=${makskazachuk} 
                 alt="Team lead picture"
                 class="our-team__picture"
                 width="150"
@@ -21,7 +28,7 @@ const createDevelopers = () => {
                 /><h3 class='teammates-name'>Maxim Kazachuk </h3><span class='our-team__position'>Team lead</span></li>
                 <li class='modalWindow-item'>
                 <img 
-                src=${poky} 
+                src=${paul} 
                 alt="Scrum Master picture"
                 class="our-team__picture"
                 width="150"
@@ -29,7 +36,7 @@ const createDevelopers = () => {
                 /><h3 class='teammates-name'>Pavlo Sakun </h3><span class='our-team__position'>Scrum Master</span></li>
                 <li class='modalWindow-item'>
                 <img 
-                src=${poky} 
+                src=${dima_orgish} 
                 alt="Teammate picture"
                 class="our-team__picture"
                 width="150"
@@ -37,7 +44,7 @@ const createDevelopers = () => {
                 /><h3 class='teammates-name'>Dmitry Orgish </h3><span class='our-team__position'>Teammate</span></li>
                 <li class='modalWindow-item'>
                 <img 
-                src=${poky} 
+                src=${dimaGrinchenko} 
                 alt="Teammate picture"
                 class="our-team__picture"
                 width="150"
@@ -45,7 +52,7 @@ const createDevelopers = () => {
                 /><h3 class='teammates-name'>Dmitriy Grinchenko </h3><span class='our-team__position'>Teammate</span></li>
                 <li class='modalWindow-item'>
                 <img 
-                src=${poky} 
+                src=${maks} 
                 alt="Teammate picture"
                 class="our-team__picture"
                 width="150"
@@ -53,7 +60,7 @@ const createDevelopers = () => {
                 /><h3 class='teammates-name'>Maksym Tuhanov </h3><span class='our-team__position'>Teammate</span></li>
                 <li class='modalWindow-item'>
                 <img 
-                src=${poky} 
+                src=${zheka} 
                 alt="Teammate picture"
                 class="our-team__picture"
                 width="150"
@@ -61,7 +68,7 @@ const createDevelopers = () => {
                 /><h3 class='teammates-name'>Evgeniy Serebrennikov </h3><span class='our-team__position'>Teammate</span></li>
                 <li class='modalWindow-item'>
                 <img 
-                src=${poky} 
+                src=${vova} 
                 alt="Teammate picture"
                 class="our-team__picture"
                 width="150"
@@ -69,7 +76,7 @@ const createDevelopers = () => {
                 /><h3 class='teammates-name'>Vova Chelidze </h3><span class='our-team__position'>Teammate</span></li>
                 <li class='modalWindow-item'>
                 <img 
-                src=${poky} 
+                src=${stas} 
                 alt="Teammate picture"
                 class="our-team__picture"
                 width="150"
