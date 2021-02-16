@@ -1,14 +1,24 @@
 import '../header/header.js';
 import { getWatched, getQueue } from '../movieCard/movieCard.js';
 import movie from '../../templates/movieCardsFromLocalStorage.hbs';
+import removeLoader from '../loader/remove-loader.js';
 
-refs.linkLibrary.addEventListener('click', renderWatched);
+refs.linkLibrary.addEventListener('click', renderLibrary);
 refs.buttonWatch.addEventListener('click', renderWatched);
 refs.buttonQueue.addEventListener('click', renderQueue);
-const pagDivRef = document.querySelector('#pagDiv');
+const mainRefs = document.querySelector('.main-cont');
+
+function renderLibrary() {
+  mainRefs.innerHTML = `<div class="container"><div class="loader"></div><ul class="film-list"></ul></div><div id="pagDiv"></div>`;
+  const markup = [];
+  const watchedArr = getWatched();
+  watchedArr.obj.forEach(data => {
+    markup.push(movie(data));
+  });
+  setTimeout(() => rend(markup), 500);
+}
 
 function renderWatched() {
-  pagDivRef.classList.add('is-hidden');
   const markup = [];
   const watchedArr = getWatched();
   watchedArr.obj.forEach(data => {
@@ -19,8 +29,8 @@ function renderWatched() {
 
 function renderQueue() {
   const markup = [];
+  console.log(markup);
   const queueArr = getQueue();
-  console.log(queueArr.obj);
   queueArr.obj.forEach(data => {
     markup.push(movie(data));
   });
@@ -28,6 +38,7 @@ function renderQueue() {
 }
 
 function rend(data) {
+  removeLoader();
   const ulRefs = document.querySelector('.film-list');
   ulRefs.innerHTML = '';
   data.forEach(item => ulRefs.insertAdjacentHTML('beforeend', item));
