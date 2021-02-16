@@ -19,12 +19,12 @@ export function apiMovieCard(movieId) {
     .catch(err => console.log(err));
 }
 function movieCardMurkup(data) {
-  const youTubekeyApi = 'AIzaSyARBacO_tdsZWQ8R_fw3eh8MtpLaz6SaNw';
+  const youTubekeyApi = 'AIzaSyDPdvd-Z0DaVIKxxUn0UYRXPrEmYEJbmkY';
   const youTubebaseUrl = `https://www.googleapis.com/youtube/v3/search?q=${data.original_title}&key=${youTubekeyApi}&part=snippet,id&order=date&maxResults=1`;
   languageData.language === 'RU'
     ? (mainRef.innerHTML = movieCardRu(data))
     : (mainRef.innerHTML = movieCard(data));
-  document.querySelector('#aa').addEventListener('click', openVideo);
+  document.querySelector('#openTrailer').addEventListener('click', openVideo);
   const watched = document.querySelector('.js-watched');
   const queue = document.querySelector('.js-queue');
   watched.addEventListener('click', addIntoWatched);
@@ -74,17 +74,21 @@ function movieCardMurkup(data) {
         data =>
           (document.querySelector(
             '#playerContainer',
-          ).innerHTML = `<div id="overlay" hidden><div id="modal_form" class="playerDiv" hidden><iframe id="player" type="text/html" width="640" height="360"
+          ).innerHTML = `<div id="overlay" hidden></div><div id="modal_form" class="playerDiv" hidden><iframe id="player" type="text/html" width="640" height="360"
           src="https://www.youtube.com/embed/${data}?enablejsapi=1"
-          frameborder="0"></iframe></div><button class="modal_close" type="button">Закрыть</button></div>`),
+          frameborder="0"></iframe><button class="modal_close" type="button"></button></div>`),
       );
   }
   youtube();
 }
 function openVideo() {
-  console.log('Открыть модалку с видео');
   document.querySelector('.playerDiv').hidden = false;
   document.querySelector('#overlay').hidden = false;
+  document.querySelector('.modal_close').addEventListener('click', () => {
+    document.querySelector('#playerContainer').hidden = true;
+    document.querySelector('#overlay').hidden = true;
+    // document.querySelector('#aa').addEventListener('click', openVideo);
+  });
 }
 function addIntoWatched(e) {
   let getWatchedMovie = putWatched();
