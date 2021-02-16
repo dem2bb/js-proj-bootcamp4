@@ -96,6 +96,7 @@
 @media screen and (min-width: 768px) {
   .cont-film {
     display: flex;
+    justify-content: center;
   }
   .img-movie-card {
     width: 294px;

@@ -9,9 +9,9 @@
     <h3 class="gallery-list__item-title">{{title}}</h3>
     <div class="film-info-cont">
         <p class="film-info">
-            {{#each genre_ids}}{{#each genres}}
+            {{#each genre_ids}}
             <span class="film-info__id">{{this}}{{this.name}}</span>
-            {{/each}}{{/each}}
+            {{/each}}
             <span class="film-info__slash">|</span>
             <span class="film-info__year">{{ release_date}}</span>
             <span class="film-info__rate">{{vote_average}}</span>
