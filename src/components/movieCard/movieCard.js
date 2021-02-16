@@ -18,8 +18,8 @@ export function apiMovieCard (movieId) {
     })
     .catch(err => console.log(err));
 }
-function movieCardMurkup (data) {
-  const youTubekeyApi = 'AIzaSyDPdvd-Z0DaVIKxxUn0UYRXPrEmYEJbmkY';
+function movieCardMurkup(data) {
+  const youTubekeyApi = 'AIzaSyAau9jxJFcGbuSBlcpbQ6-jWd2i7BoZjec';
   const youTubebaseUrl = `https://www.googleapis.com/youtube/v3/search?q=${data.original_title}&key=${youTubekeyApi}&part=snippet,id&order=date&maxResults=1`;
   languageData.language === 'RU'
     ? (mainRef.innerHTML = movieCardRu(data))
@@ -76,24 +76,28 @@ function movieCardMurkup (data) {
       .then(data => {
         return data.items[0].id.videoId;
       })
-      .then(
-        data =>
-          (document.querySelector(
-            '#playerContainer',
-          ).innerHTML = `<div id="overlay" hidden></div><div id="modal_form" class="playerDiv" hidden><iframe id="player" type="text/html" width="640" height="360"
-          src="https://www.youtube.com/embed/${data}?enablejsapi=1"
-          frameborder="0"></iframe><button class="modal_close" type="button"></button></div>`),
-      );
+      .then(data => {
+        document.querySelector(
+          '#playerContainer',
+        ).innerHTML = `<div id="overlay" hidden></div><div id="modal_form" class="playerDiv" hidden><button class="modal_close" type="button"></button><iframe id="player" type="text/html" width="640" height="360" src="https://www.youtube.com/embed/${data}?enablejsapi=1" frameborder="0"></iframe></div>`;
+
+        document.querySelector(
+          '#openTrailer',
+        ).dataset.videosrc = `https://www.youtube.com/embed/${data}?enablejsapi=1`;
+      });
   }
   youtube();
 }
-function openVideo () {
+function openVideo() {
+  document.querySelector('#player').src = document.querySelector(
+    '#openTrailer',
+  ).dataset.videosrc;
   document.querySelector('.playerDiv').hidden = false;
   document.querySelector('#overlay').hidden = false;
+  document.querySelector('#playerContainer').hidden = false;
   document.querySelector('.modal_close').addEventListener('click', () => {
     document.querySelector('#playerContainer').hidden = true;
-    document.querySelector('#overlay').hidden = true;
-    // document.querySelector('#aa').addEventListener('click', openVideo);
+    document.querySelector('#overlay').hidden = true;  
   });
 }
 function addIntoWatched (e) {
