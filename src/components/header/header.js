@@ -12,15 +12,6 @@ refs.linkHome.addEventListener('click', homeRender);
 
 refs.linkLibrary.addEventListener('click', libRender);
 
-function homeRender (event) {
-  refs.linkHome.classList.add('current');
-  refs.linkLibrary.classList.remove('current');
-  refs.inputForm.classList.remove('is-hidden');
-  refs.buttonQueue.classList.add('is-hidden');
-  refs.buttonWatch.classList.add('is-hidden');
-  refs.headerBcg.classList.remove('lib-bcg');
-  refs.headerBcg.classList.remove('modal-bcg');
-}
 function libRender (event) {
   refs.linkHome.classList.remove('current');
   refs.linkLibrary.classList.add('current');
@@ -30,4 +21,14 @@ function libRender (event) {
   refs.headerBcg.classList.add('lib-bcg');
   refs.headerBcg.classList.remove('modal-bcg');
   refs.languageSet.classList.remove('is-hidden');
+}
+
+function homeRender (event) {
+  refs.linkHome.classList.add('current');
+  refs.linkLibrary.classList.remove('current');
+  refs.inputForm.classList.remove('is-hidden');
+  refs.buttonQueue.classList.add('is-hidden');
+  refs.buttonWatch.classList.add('is-hidden');
+  refs.headerBcg.classList.remove('lib-bcg');
+  refs.headerBcg.classList.remove('modal-bcg');
 }
