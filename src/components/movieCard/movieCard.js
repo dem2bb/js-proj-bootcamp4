@@ -6,7 +6,7 @@ import movieCardRu from '../../templates/movieCardRu.hbs';
 const mainRef = document.querySelector('main');
 let id;
 let obj;
-export function apiMovieCard (movieId) {
+export function apiMovieCard(movieId) {
   id = movieId;
   const keyApi = '65999cd4dc4e9b42ad69f2cfa64d7f94';
   const baseUrl = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${keyApi}&language=${languageData.fetchLanguage}`;
@@ -19,8 +19,8 @@ export function apiMovieCard (movieId) {
     .catch(err => console.log(err));
 }
 function movieCardMurkup(data) {
-  const youTubekeyApi = 'AIzaSyAau9jxJFcGbuSBlcpbQ6-jWd2i7BoZjec';
-  const youTubebaseUrl = `https://www.googleapis.com/youtube/v3/search?q=${data.original_title}&key=${youTubekeyApi}&part=snippet,id&order=date&maxResults=1`;
+  const youTubekeyApi = 'AIzaSyA7NhUZ2il-pyy6Dq9iaIB9Ozz41656aQ4';
+  const youTubebaseUrl = `https://www.googleapis.com/youtube/v3/search?q=${data.original_title}+official+trailer&key=${youTubekeyApi}&part=snippet,id&order=date&maxResults=1`;
   languageData.language === 'RU'
     ? (mainRef.innerHTML = movieCardRu(data))
     : (mainRef.innerHTML = movieCard(data));
@@ -70,7 +70,7 @@ function movieCardMurkup(data) {
   //     }
   //   }
   // }
-  function youtube () {
+  function youtube() {
     fetch(youTubebaseUrl)
       .then(res => res.json())
       .then(data => {
@@ -79,7 +79,7 @@ function movieCardMurkup(data) {
       .then(data => {
         document.querySelector(
           '#playerContainer',
-        ).innerHTML = `<div id="overlay" hidden></div><div id="modal_form" class="playerDiv" hidden><button class="modal_close" type="button"></button><iframe id="player" type="text/html" width="640" height="360" src="https://www.youtube.com/embed/${data}?enablejsapi=1" frameborder="0"></iframe></div>`;
+        ).innerHTML = `<div id="overlay" hidden></div><div id="modal_form" class="playerDiv" hidden><button class="modal_close" type="button"></button><iframe id="player" type="text/html" src="https://www.youtube.com/embed/${data}?enablejsapi=1" frameborder="0"></iframe></div>`;
 
         document.querySelector(
           '#openTrailer',
@@ -97,10 +97,10 @@ function openVideo() {
   document.querySelector('#playerContainer').hidden = false;
   document.querySelector('.modal_close').addEventListener('click', () => {
     document.querySelector('#playerContainer').hidden = true;
-    document.querySelector('#overlay').hidden = true;  
+    document.querySelector('#overlay').hidden = true;
   });
 }
-function addIntoWatched (e) {
+function addIntoWatched(e) {
   let getWatchedMovie = putWatched();
   const btn = e.target;
   if (languageData.language === 'EN') {
@@ -162,7 +162,7 @@ function addIntoWatched (e) {
   localStorage.setItem('WatchedId', JSON.stringify(getWatchedMovie.id));
   localStorage.setItem('WatchedObj', JSON.stringify(getWatchedMovie.obj));
 }
-function addIntoQueue (e) {
+function addIntoQueue(e) {
   let getQueueMovie = putQueue();
   const btn = e.target;
   if (languageData.language === 'EN') {
@@ -222,7 +222,7 @@ function addIntoQueue (e) {
   localStorage.setItem('QueueId', JSON.stringify(getQueueMovie.id));
   localStorage.setItem('QueueObj', JSON.stringify(getQueueMovie.obj));
 }
-function getQueue () {
+function getQueue() {
   const movieStorageID = localStorage.getItem('QueueId');
   const movieStorageObj = localStorage.getItem('QueueObj');
   if (movieStorageID !== null && movieStorageObj !== null) {
@@ -232,7 +232,7 @@ function getQueue () {
   }
   return { id: [], obj: [] };
 }
-function getWatched () {
+function getWatched() {
   const movieStorageID = localStorage.getItem('WatchedId');
   const movieStorageObj = localStorage.getItem('WatchedObj');
   if (movieStorageID !== null && movieStorageObj !== null) {
@@ -243,7 +243,7 @@ function getWatched () {
   return { id: [], obj: [] };
 }
 
-function putWatched () {
+function putWatched() {
   let movie = getWatched();
   const index = movie.id.indexOf(id);
   if (index === -1) {
@@ -256,7 +256,7 @@ function putWatched () {
   return { id: movie.id, obj: movie.obj };
 }
 export { getWatched, getQueue };
-function putQueue () {
+function putQueue() {
   let movie = getQueue();
   const index = movie.id.indexOf(id);
   if (index === -1) {
