@@ -19,25 +19,29 @@ function renderLibrary() {
   setTimeout(() => rend(markup), 500);
 }
 
-function renderWatched() {
+function renderWatched () {
   const markup = [];
   const watchedArr = getWatched();
   watchedArr.obj.forEach(data => {
     markup.push(movie(data));
   });
   rend(markup);
+  refs.buttonQueue.classList.remove('is-active');
+  refs.buttonWatch.classList.add('is-active');
 }
 
-function renderQueue() {
+function renderQueue () {
   const markup = [];
   const queueArr = getQueue();
   queueArr.obj.forEach(data => {
     markup.push(movie(data));
   });
   rend(markup);
+  refs.buttonQueue.classList.add('is-active');
+  refs.buttonWatch.classList.remove('is-active');
 }
 
-function rend(data) {
+function rend (data) {
   removeLoader();
   const ulRefs = document.querySelector('.film-list-render');
   ulRefs.addEventListener('click', imgOpen);

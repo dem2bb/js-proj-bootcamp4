@@ -3,7 +3,6 @@ const inputFormRef = document.querySelector('.search-form');
 const buttonWatchRef = document.querySelector('.button.watch');
 const buttonQueueRef = document.querySelector('.button.queue');
 const headerBcgRef = document.querySelector('.page-header');
-const refLanguageSet = document.querySelector('.theme-switch__control');
 
 const refs = {
   ul: document.querySelector('.film-list'),
@@ -19,7 +18,6 @@ function imgOpen(event) {
   buttonWatchRef.classList.add('is-hidden');
   buttonQueueRef.classList.add('is-hidden');
   headerBcgRef.classList.add('modal-bcg');
-  refLanguageSet.classList.add('is-hidden');
 }
 
 refs.ul.addEventListener('click', imgOpen);

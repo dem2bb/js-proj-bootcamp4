@@ -19,8 +19,8 @@ export function apiMovieCard(movieId) {
     .catch(err => console.log(err));
 }
 function movieCardMurkup(data) {
-  const youTubekeyApi = 'AIzaSyAau9jxJFcGbuSBlcpbQ6-jWd2i7BoZjec';
-  const youTubebaseUrl = `https://www.googleapis.com/youtube/v3/search?q=${data.original_title}&key=${youTubekeyApi}&part=snippet,id&order=date&maxResults=1`;
+  const youTubekeyApi = 'AIzaSyATCWpljJBzf_R0JTgPSYyKAxTmOMcT-mg';
+  const youTubebaseUrl = `https://www.googleapis.com/youtube/v3/search?q=${data.original_title}+official+trailer&key=${youTubekeyApi}&part=snippet,id&order=date&maxResults=1`;
   languageData.language === 'RU'
     ? (mainRef.innerHTML = movieCardRu(data))
     : (mainRef.innerHTML = movieCard(data));
@@ -79,11 +79,21 @@ function movieCardMurkup(data) {
       .then(data => {
         document.querySelector(
           '#playerContainer',
-        ).innerHTML = `<div id="overlay" hidden></div><div id="modal_form" class="playerDiv" hidden><button class="modal_close" type="button"></button><iframe id="player" type="text/html" width="640" height="360" src="https://www.youtube.com/embed/${data}?enablejsapi=1" frameborder="0"></iframe></div>`;
+        ).innerHTML = `<div id="overlay" hidden></div><div id="modal_form" class="playerDiv" hidden><button class="modal_close" type="button"></button><iframe id="player" type="text/html" src="https://www.youtube.com/embed/${data}?enablejsapi=1" frameborder="0"></iframe></div>`;
 
         document.querySelector(
           '#openTrailer',
         ).dataset.videosrc = `https://www.youtube.com/embed/${data}?enablejsapi=1`;
+        
+        //============================================
+        const youtubeUrl = document.querySelector(
+          '#openTrailer',
+        ).dataset.videosrc;
+
+        document.querySelector('.facebook').setAttribute('onClick', `window.open('https://www.facebook.com/sharer.php?u=${youtubeUrl}','sharer','status=0,toolbar=0,width=650,height=500');`)
+        document.querySelector('.twitter').setAttribute('onClick', `window.open('https://twitter.com/intent/tweet?text=${youtubeUrl}','sharer','status=0,toolbar=0,width=650,height=500');`)
+        document.querySelector('.telegram').setAttribute('onClick', `window.open('https://telegram.me/share/url?url=${youtubeUrl}','sharer','status=0,toolbar=0,width=650,height=500');`)
+
       });
   }
   youtube();
@@ -257,7 +267,6 @@ function putWatched() {
 }
 
 export { getWatched, getQueue };
-
 function putQueue() {
   let movie = getQueue();
   const index = movie.id.indexOf(id);
