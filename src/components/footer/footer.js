@@ -142,7 +142,7 @@ const createDevelopers = () => {
                 class="our-team__picture"
                 width="150"
                 height="150"
-                /><h3 class='teammates-name'>Евгений Серебрянников </h3><span class='our-team__position'>Разработчик</span></li>
+                /><h3 class='teammates-name'>Евгений Серебренников </h3><span class='our-team__position'>Разработчик</span></li>
                 <li class='modalWindow-item'>
                 <img 
                 src=${vova} 
