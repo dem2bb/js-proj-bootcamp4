@@ -2,6 +2,7 @@
     <img class="img-movie-card" src="https://image.tmdb.org/t/p/w300{{poster_path}}" alt="{{title}}">
     <div class="wrapper">
         <p class="title">{{title}}</p>
+    <button id="openTrailer" type="button">  <img class="playSvg" alt="" /></button>
         <ul class="list">
             <li class="list-item">
                 <p>Vote / Votes</p>
@@ -28,7 +29,6 @@
         <button class="button btn-to-watched js-watched" type="button">add to Watched</button>
         <button class="button btn-to-queue js-queue" type="button">add to queue</button>
         <div class="share-btns">
-            <button id="openTrailer" type="button">  <img class="playSvg" alt="" /></button>
             <a class="facebook" rel="nofollow" href="javascript: void(0)"
                 onClick="window.open('https://www.facebook.com/sharer.php?u=АДРЕС_СТРАНИЦЫ','sharer','status=0,toolbar=0,width=650,height=500');"
                 title="Поделиться в Facebook"></a>
@@ -42,4 +42,5 @@
         <div id ="playerContainer"> 
         </div>             
     </div>
+    <a class="btn-back" href="./index.html"></a>
 </div>

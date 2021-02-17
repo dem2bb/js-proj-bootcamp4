@@ -10,7 +10,7 @@
   font-size: 20px;
   line-height: 23px;
   color: #000000;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
 }
 
 .list-item {
@@ -89,6 +89,16 @@ color: black;
   border: 1px solid #000000;
   color: black;
   outline: none;
+}
+.btn-back{
+  display: block;
+  width: 40px;
+  height: 40px;
+  background-image: url(../../images/icons/button-back-1.svg);
+  background-size: cover;
+  position: absolute;
+  right: 0;
+  bottom: 0;
 }
 .js-clicked {
   background-color: green;
