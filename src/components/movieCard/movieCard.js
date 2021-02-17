@@ -60,7 +60,6 @@ function movieCardMurkup(data) {
     fetch(youTubebaseUrl)
       .then(res => res.json())
       .then(data => {
-        console.log(data);
         return data.items[0].id.videoId;
       })
       .then(
@@ -90,7 +89,7 @@ function addIntoWatched(e) {
     btn.classList.contains('js-clicked')
       ? btn.classList.remove('js-clicked')
       : btn.classList.add('js-clicked');
-    localStorage.setItem('WatchedId', JSON.stringify(getWatchedMovie.id));
+    // localStorage.setItem('WatchedId', JSON.stringify(getWatchedMovie.id));
   }
   if (languageData.language === 'RU') {
     btn.innerHTML =
@@ -100,10 +99,10 @@ function addIntoWatched(e) {
     btn.classList.contains('js-clicked')
       ? btn.classList.remove('js-clicked')
       : btn.classList.add('js-clicked');
-    localStorage.setItem('WatchedId', JSON.stringify(getWatchedMovie.id));
+    // localStorage.setItem('WatchedId', JSON.stringify(getWatchedMovie.id));
   }
-  btn.innerHTML = (btn.innerHTML === 'Added to Watched') ? btn.innerHTML = 'Add to Watched' : btn.innerHTML = 'Added to Watched';
-  (btn.classList.contains('js-clicked')) ? btn.classList.remove('js-clicked') : btn.classList.add('js-clicked');
+  // btn.innerHTML = (btn.innerHTML === 'Added to Watched') ? btn.innerHTML = 'Add to Watched' : btn.innerHTML = 'Added to Watched';
+  // (btn.classList.contains('js-clicked')) ? btn.classList.remove('js-clicked') : btn.classList.add('js-clicked');
   localStorage.setItem('WatchedId', JSON.stringify(getWatchedMovie.id));
   localStorage.setItem('WatchedObj', JSON.stringify(getWatchedMovie.obj));
 }
@@ -118,7 +117,7 @@ function addIntoQueue(e) {
     btn.classList.contains('js-clicked')
       ? btn.classList.remove('js-clicked')
       : btn.classList.add('js-clicked');
-    localStorage.setItem('QueueId', JSON.stringify(getQueueMovie.movie));
+    // localStorage.setItem('QueueId', JSON.stringify(getQueueMovie.movie));
   }
   if (languageData.language === 'RU') {
     btn.innerHTML =
@@ -128,10 +127,10 @@ function addIntoQueue(e) {
     btn.classList.contains('js-clicked')
       ? btn.classList.remove('js-clicked')
       : btn.classList.add('js-clicked');
-    localStorage.setItem('QueueId', JSON.stringify(getQueueMovie.movie));
+    // localStorage.setItem('QueueId', JSON.stringify(getQueueMovie.movie));
   }
-  btn.innerHTML = (btn.innerHTML === 'Added to Queue') ? btn.innerHTML = 'Add to Queue' : btn.innerHTML = 'Added to Queue';
-  (btn.classList.contains('js-clicked')) ? btn.classList.remove('js-clicked') : btn.classList.add('js-clicked');
+  // btn.innerHTML = (btn.innerHTML === 'Added to Queue') ? btn.innerHTML = 'Add to Queue' : btn.innerHTML = 'Added to Queue';
+  // (btn.classList.contains('js-clicked')) ? btn.classList.remove('js-clicked') : btn.classList.add('js-clicked');
   localStorage.setItem('QueueId', JSON.stringify(getQueueMovie.id));
   localStorage.setItem('QueueObj', JSON.stringify(getQueueMovie.obj));
 }
