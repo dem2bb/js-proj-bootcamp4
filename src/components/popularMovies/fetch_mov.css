@@ -67,7 +67,30 @@
   border-radius: 5px;
 }
 
-.box-shadow{
+.box-shadow {
+  box-shadow: 10px 10px 8px 2px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  transform: scale(1.05);
+  transition-duration: 500ms;
+}
+
+.film-list-render {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style: none;
+}
+
+.gallery-list__item-library {
+  margin-bottom: 31px;
+  cursor: pointer;
+  width: 274px;
+}
+.gallery-list__item-library:not(:nth-child(4n)) {
+  margin-right: 15px;
+}
+
+.gallery-list__item-library:hover {
   box-shadow: 10px 10px 8px 2px rgba(0, 0, 0, 0.3);
   border-radius: 5px;
   transform: scale(1.05);

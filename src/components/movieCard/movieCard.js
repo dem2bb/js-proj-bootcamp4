@@ -265,6 +265,7 @@ function putWatched() {
   }
   return { id: movie.id, obj: movie.obj };
 }
+
 export { getWatched, getQueue };
 function putQueue() {
   let movie = getQueue();
