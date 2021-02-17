@@ -20,7 +20,6 @@ function libRender (event) {
   refs.buttonWatch.classList.remove('is-hidden');
   refs.headerBcg.classList.add('lib-bcg');
   refs.headerBcg.classList.remove('modal-bcg');
-  refs.languageSet.classList.remove('is-hidden');
 }
 
 function homeRender (event) {

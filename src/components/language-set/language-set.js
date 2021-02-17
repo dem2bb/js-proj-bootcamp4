@@ -2,7 +2,6 @@ const refLanguageSet = document.querySelector('.theme-switch__toggle');
 const refEnglish = document.querySelectorAll('.english');
 const refRussian = document.querySelectorAll('.russian');
 const input = document.querySelector('.search-form > input');
-import { fetchMovies } from '../popularMovies/fetch.js';
 
 const savedLanguage = localStorage.getItem('language');
 export const languageData = JSON.parse(savedLanguage) || {
@@ -38,7 +37,7 @@ function changeLanguage (event) {
     languageData.language = 'RU';
     languageData.fetchLanguage = 'ru-RU';
     localStorage.setItem('language', JSON.stringify(languageData));
-    fetchMovies();
+    location.reload();
   } else if (languageData.language === 'RU') {
     refRussian.forEach(e => {
       e.classList.add('is-hidden');
@@ -50,7 +49,7 @@ function changeLanguage (event) {
     languageData.language = 'EN';
     languageData.fetchLanguage = 'en-US';
     localStorage.setItem('language', JSON.stringify(languageData));
-    fetchMovies();
+    location.reload();
   }
 }
 
