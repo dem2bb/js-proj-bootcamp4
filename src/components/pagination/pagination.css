@@ -6,7 +6,7 @@
 
 #pagDiv {
   display: flex;
-  padding-top: 50px;
+  padding-top: 40px;
   /* margin-bottom: 60px; */
   font-family: Roboto;
   font-style: normal;
@@ -17,7 +17,16 @@
   text-align: center;
   justify-content: center;
 }
-
+@media screen and (min-width:768px){
+ #pagDiv{
+    padding-top: 50px;
+  }
+}
+@media screen and (min-width:1024px){
+ #pagDiv{
+    padding-top: 46px;
+  }
+}
 .repos-pagination,
 .repos-pagination__link {
   color: var(--color-1);

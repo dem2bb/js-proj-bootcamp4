@@ -18,8 +18,9 @@ export function apiMovieCard (movieId) {
     })
     .catch(err => console.log(err));
 }
-function movieCardMurkup (data) {
-  const youTubekeyApi = 'AIzaSyA7NhUZ2il-pyy6Dq9iaIB9Ozz41656aQ4';
+
+function movieCardMurkup(data) {
+  const youTubekeyApi = 'AIzaSyATCWpljJBzf_R0JTgPSYyKAxTmOMcT-mg';
   const youTubebaseUrl = `https://www.googleapis.com/youtube/v3/search?q=${data.original_title}+official+trailer&key=${youTubekeyApi}&part=snippet,id&order=date&maxResults=1`;
   languageData.language === 'RU'
     ? (mainRef.innerHTML = movieCardRu(data))
@@ -282,6 +283,7 @@ function putWatched () {
   }
   return { id: movie.id, obj: movie.obj };
 }
+
 export { getWatched, getQueue };
 function putQueue () {
   let movie = getQueue();

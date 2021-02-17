@@ -10,7 +10,7 @@
   font-size: 20px;
   line-height: 23px;
   color: #000000;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
 }
 
 .list-item {
@@ -90,6 +90,16 @@ color: black;
   color: black;
   outline: none;
 }
+.btn-back{
+  display: block;
+  width: 40px;
+  height: 40px;
+  background-image: url(../../images/icons/button-back-1.svg);
+  background-size: cover;
+  position: absolute;
+  right: 14px;
+  top: 435px;
+}
 .js-clicked {
   background-color: green;
   color: white;
@@ -118,6 +128,10 @@ color: black;
     background-color: green;
     color: white;
     outline: none;
+  }
+  .btn-back{
+    right: 0px;
+    top: 0px;
   }
 }
 

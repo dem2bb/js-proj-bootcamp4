@@ -21,7 +21,18 @@ body {
   scroll-behavior: smooth;
   font-family: 'Roboto', sans-serif;
   font-style: normal;
+  /* =================================== */
+  position: relative; 
+  min-height: 100vh;
+  padding-bottom: 140px;
+
 }
+@media screen and (min-width:768px){
+ body{
+    padding-bottom: 138px;
+  }
+}
+
 .list {
   list-style: none;
   text-decoration: none;
